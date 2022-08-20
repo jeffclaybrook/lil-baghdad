@@ -2,19 +2,19 @@ const appetizers = [
     {
         name: "Baba Ganoush",
         description: "Spicy, aromatic roasted eggplant mixed with olive oil, tahini salsa, fresh lemon juice, and family spice recipe.",
-        price: "$7.99",
+        price: "$6.99",
         image: "appetizer-1.jpeg"
     },
     {
         name: "Falafel",
         description: "Deep-fried ball made from ground chickpeas, assorted green vegetables and spices.",
-        price: "$7.99",
+        price: "$5.00",
         image: "appetizer-2.jpeg"
     },
     {
         name: "Hummus Joy",
         description: "Delicious, creamy, and flavorful hummus drizzled with Lebanese olive oil.",
-        price: "$7.99",
+        price: "$6.99",
         image: "appetizer-3.jpeg"
     },
     {
@@ -26,7 +26,7 @@ const appetizers = [
     {
         name: "Dolmeh Grape Leaves",
         description: "Chopped beef, rice, onions, and aromatic spices hand-wrapped and slowly cooked for a melt-in-your-mouth texture.",
-        price: "$8.99",
+        price: "$9.00",
         image: "appetizer-5.jpeg"
     },
     {
@@ -53,13 +53,13 @@ const appetizers = [
     {
         name: "Chicken Shawarma Plate",
         description: "Spicy marinated chicken strips served with fresh salad and royal rice served with fresh naan bread.",
-        price: "$11.99",
+        price: "$12.00",
         image: "dish-2.jpeg"
     },
     {
         name: "Falafel Plate",
         description: "Garbanzo beans, greens, and spices is served on the top layer of rice, along with veggies, a side dipping hummus, and creamy tahini sauce.",
-        price: "$10.99",
+        price: "$10.00",
         image: "dish-3.jpeg"
     },
     {
@@ -77,7 +77,7 @@ const appetizers = [
     {
         name: "Beef Shawarma Sandwich",
         description: "Beef shawarma with pita bread, parsley, onions, tomatoes, radishes, tahini sauce, and beef.",
-        price: "$12.99",
+        price: "$12.00",
         image: "dish-6.jpeg"
     },
     {
@@ -95,7 +95,7 @@ const appetizers = [
     {
         name: "Beef Kebab Plate",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit molestiae nam quos neque recusandae assumenda.",
-        price: "$10.99",
+        price: "$11.00",
         image: "dish-9.jpeg"
     },
     {
@@ -122,13 +122,13 @@ const appetizers = [
     {
         name: "Baklava",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci architecto quidem eum obcaecati vitae. Assumenda!",
-        price: "$4.50",
+        price: "$4.00",
         image: "dessert-1.jpeg"
     },
     {
         name: "Sopapilla Cheesecake",
         description: "Flaky crust with sweet cream cheese filling topped with cinnamon sugar.",
-        price: "$4.50",
+        price: "$4.00",
         image: "dessert-2.jpeg"
     }
  ]
@@ -137,19 +137,19 @@ const appetizers = [
     {
         name: "Hibiscus Tea",
         description: "Popular herbal street drink made from dehydrated hibiscus with a sweet and sour taste.",
-        price: "$1.99",
+        price: "$2.00",
         image: "drink-1.jpeg"
     },
     {
         name: "Lemonade Refreshing Iced Tea",
         description: "Fresh cardamom and lemon juice. It is sweet & delightful drink with no artificial add-ons.",
-        price: "$1.99",
+        price: "$2.00",
         image: "drink-2.jpeg"
     },
     {
         name: "Rose & Pomegranate Tea",
         description: "Rose flavored and sweet Pomegranate cold drink.",
-        price: "$1.99",
+        price: "$2.00",
         image: "drink-3.jpeg"
     }
  ]

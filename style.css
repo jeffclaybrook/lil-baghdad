@@ -76,9 +76,9 @@ header {
    background: #292a2d;
 }
 
-header img {
+header .image-wrapper {
+   display: block;
    height: 6rem;
-   display: flex;
 }
 
 nav {
@@ -179,6 +179,8 @@ section li .item-details {
    justify-content: center;
    gap: .25rem;
    flex: 3;
+   height: 85.5px;
+   width: 100%;
 }
 
 section li .item-details h3 {
@@ -218,12 +220,15 @@ section li .item-image {
    flex: 1;
    overflow: hidden;
    border-radius: .25rem;
+   height: 85.5px;
+   width: 100%;
+   background: #e1e3e562;
 }
 
 section li .item-image img {
    object-fit: cover;
-   width: 100%;
-   height: 100%;
+   height: 85.5px;
+   width: 100%;   
    border-radius: inherit;
 }
 
@@ -233,13 +238,15 @@ footer {
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   gap: 2rem;
    padding-top: 2rem;
    padding-bottom: 1rem;
    border-top: 1px solid rgba(225, 227, 229, 0.25);
 }
 
-footer img {
-   margin-bottom: 2rem;
+footer .image-wrapper {
+   display: block;
+   height: 8.125rem;
 }
 
 footer ul {
@@ -247,7 +254,6 @@ footer ul {
    align-items: center;
    justify-content: center;
    gap: 1.5rem;
-   margin-bottom: 2rem;
 }
 
 footer ul a {
@@ -285,7 +291,7 @@ aside.hidden {
    pointer-events: none;
 }
 
-.modal-inner {
+aside .modal-inner {
    position: absolute;
    top: 50%;
    left: 50%;
@@ -296,7 +302,7 @@ aside.hidden {
    border-radius: .5rem;
 }
 
-.modal-header {
+aside .modal-header {
    position: relative;
    display: flex;
    align-items: center;
@@ -304,12 +310,12 @@ aside.hidden {
    width: 100%;
 }
 
-.modal-header img {
+aside .modal-header img {
    width: 100%;
    border-radius: .5rem .5rem 0 0;
 }
 
-.modal-header .close-btn {
+aside .modal-header .close-btn {
    position: absolute;
    top: .5rem;
    right: .5rem;
@@ -324,7 +330,7 @@ aside.hidden {
    background: #292a2d;
 }
 
-.modal-body {
+aside .modal-body {
    display: flex;
    flex-direction: column;
    align-items: flex-start;
@@ -333,20 +339,20 @@ aside.hidden {
    padding: 1rem 1.5rem;
 }
 
-.modal-body h3 {
+aside .modal-body h3 {
    font-size: 1.25rem;
    font-weight: 600;
    color: #e1e3e5;
 }
 
-.modal-body p {
+aside .modal-body p {
    font-size: 1rem;
    font-weight: 400;
    color: #e1e3e5cb;
    line-height: 1.5;
 }
 
-.modal-body h4 {
+aside .modal-body h4 {
    font-size: .925rem;
    font-weight: 600;
    color: #e1e3e5;

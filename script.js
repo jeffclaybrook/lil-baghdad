@@ -190,7 +190,7 @@ function populateSections() {
             <h4 data-price="${appetizer.price}">${appetizer.price}</h4>
         </div>
         <div class="item-image">
-            <img data-image="${appetizer.image}" src="images/${appetizer.image}" alt="${appetizer.name}" loading="lazy">
+            <img src="images/${appetizer.image}" alt="${appetizer.name}" loading="lazy">
         </div>
         `;
         ulTag.appendChild(liTag);
@@ -207,7 +207,7 @@ function populateSections() {
             <h4 data-price="${dish.price}">${dish.price}</h4>
         </div>
         <div class="item-image">
-            <img data-image="${dish.image}" src="images/${dish.image}" alt="${dish.name}" loading="lazy">
+            <img src="images/${dish.image}" alt="${dish.name}" loading="lazy">
         </div>
         `;
         ulTag.appendChild(liTag);
@@ -224,7 +224,7 @@ function populateSections() {
             <h4 data-price="${dessert.price}">${dessert.price}</h4>
         </div>
         <div class="item-image">
-            <img data-image="${dessert.image}" src="images/${dessert.image}" alt="${dessert.name}" loading="lazy">
+            <img src="images/${dessert.image}" alt="${dessert.name}" loading="lazy">
         </div>
         `;
         ulTag.appendChild(liTag);
@@ -269,11 +269,11 @@ function openModal() {
 function closeModal() {
     const body = document.body;
     const modal = document.querySelector('aside');
+    modal.classList.add('hidden');
     scrollY = body.style.top;
     body.style.position = 'relative';
     body.style.top = '';
     window.scrollTo(0, parseInt(scrollY || '0') * -1);
-    modal.classList.add('hidden');
 }
 
 window.addEventListener('scroll', () => {

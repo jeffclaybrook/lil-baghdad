@@ -179,7 +179,7 @@ function populateSections() {
             <h4 data-price="${appetizer.price}">${appetizer.price}</h4>
         </div>
         <div class="item-image">
-            <img data-image="${appetizer.image}" src="images/${appetizer.image}" alt="${appetizer.name}" loading="lazy">
+            <img src="images/${appetizer.image}" width="108.5px" height="85.5px" alt="${appetizer.description}">
         </div>
         `;
         ulTag.appendChild(liTag);
@@ -196,7 +196,7 @@ function populateSections() {
             <h4 data-price="${dish.price}">${dish.price}</h4>
         </div>
         <div class="item-image">
-            <img data-image="${dish.image}" src="images/${dish.image}" alt="${dish.name}" loading="lazy">
+            <img src="images/${dish.image}" width="108.5px" height="85.5px" alt="${dish.description}" loading="lazy">
         </div>
         `;
         ulTag.appendChild(liTag);
@@ -213,7 +213,7 @@ function populateSections() {
             <h4 data-price="${dessert.price}">${dessert.price}</h4>
         </div>
         <div class="item-image">
-            <img data-image="${dessert.image}" src="images/${dessert.image}" alt="${dessert.name}" loading="lazy">
+            <img src="images/${dessert.image}" width="108.5px" height="85.5px" alt="${dessert.description}" loading="lazy">
         </div>
         `;
         ulTag.appendChild(liTag);
@@ -230,7 +230,7 @@ function populateSections() {
             <h4 data-price="${drink.price}">${drink.price}</h4>
         </div>
         <div class="item-image">
-            <img src="images/${drink.image}" alt="${drink.name}" loading="lazy">
+            <img src="images/${drink.image}" width="108.5px" height="85.5px" alt="${drink.description}" loading="lazy">
         </div>
         `;
         ulTag.appendChild(liTag);

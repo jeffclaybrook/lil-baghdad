@@ -1,4 +1,4 @@
-const menu = [
+const appetizers = [
     {
         name: "Baba Ganoush",
         description: "Spicy, aromatic roasted eggplant mixed with olive oil, tahini salsa, fresh lemon juice, and family spice recipe.",
@@ -40,7 +40,10 @@ const menu = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit molestiae nam quos neque recusandae assumenda.",
         price: "$3.99",
         image: "appetizer-7.jpeg"
-    },
+    }
+];
+
+const dishes = [
     {
         name: "Beef Kabab with Rice",
         description: "Flour, ground beef, and spices deep fried and served with our house salad, in-house hummus, and white Jasmine rice.",
@@ -112,7 +115,10 @@ const menu = [
         description: "Lentil soup consisting of carrots, fried onion, turmeric and house spice blend slow boiled to perfection.",
         price: "$7.99",
         image: "dish-12.jpeg"
-    },
+    }
+];
+
+const desserts = [
     {
         name: "Baklava",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci architecto quidem eum obcaecati vitae. Assumenda!",
@@ -124,7 +130,10 @@ const menu = [
         description: "Flaky crust with sweet cream cheese filling topped with cinnamon sugar.",
         price: "$4.00",
         image: "dessert-2.jpeg"
-    },
+    }
+];
+
+const drinks = [
     {
         name: "Hibiscus Tea",
         description: "Popular herbal street drink made from dehydrated hibiscus with a sweet and sour taste.",
@@ -143,27 +152,7 @@ const menu = [
         price: "$2.00",
         image: "drink-3.jpeg"
     }
-]
-
-let appetizers = [];
-for (let i = 0; i < menu.length - 17; i++) {
-    appetizers.push(menu[i]);
-}
-
-let dishes = [];
-for (let i = 7; i < menu.length - 5; i++) {
-    dishes.push(menu[i]);
-}
-
-let desserts = [];
-for (let i = 19; i < menu.length - 3; i++) {
-    desserts.push(menu[i]);
-}
-
-let drinks = [];
-for (let i = 21; i < menu.length; i++) {
-    drinks.push(menu[i]);
-}
+];
 
 let menuIndex = 0;
 
@@ -190,7 +179,7 @@ function populateSections() {
             <h4 data-price="${appetizer.price}">${appetizer.price}</h4>
         </div>
         <div class="item-image">
-            <img src="images/${appetizer.image}" alt="${appetizer.name}" loading="lazy">
+            <img data-image="${appetizer.image}" src="images/${appetizer.image}" alt="${appetizer.name}" loading="lazy">
         </div>
         `;
         ulTag.appendChild(liTag);
@@ -207,7 +196,7 @@ function populateSections() {
             <h4 data-price="${dish.price}">${dish.price}</h4>
         </div>
         <div class="item-image">
-            <img src="images/${dish.image}" alt="${dish.name}" loading="lazy">
+            <img data-image="${dish.image}" src="images/${dish.image}" alt="${dish.name}" loading="lazy">
         </div>
         `;
         ulTag.appendChild(liTag);
@@ -224,7 +213,7 @@ function populateSections() {
             <h4 data-price="${dessert.price}">${dessert.price}</h4>
         </div>
         <div class="item-image">
-            <img src="images/${dessert.image}" alt="${dessert.name}" loading="lazy">
+            <img data-image="${dessert.image}" src="images/${dessert.image}" alt="${dessert.name}" loading="lazy">
         </div>
         `;
         ulTag.appendChild(liTag);

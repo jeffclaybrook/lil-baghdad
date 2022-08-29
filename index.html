@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <meta name="robots" content="index,follow">
+   <meta name="googlebot" content="index,follow">
    <meta name="mobile-web-app-capable" content="yes">
    <meta name="theme-color" content="#292a2d">
    <meta name="description" content="Lil Baghdad food truck online menu">
@@ -12,25 +16,45 @@
    <meta name="apple-mobile-web-app-title" content="Lil Baghdad | Iraqi Cuisine">
    <meta name="apple-mobile-web-app-status-bar-style" content="#292a2d">
    <link rel="apple-touch-icon" href="images/icon.png" sizes="192x192">
-   <link rel="apple-touch-startup-image" href="images/icon.png">
+   <link rel="apple-touch-startup-image" href="images/icon.png" sizes="192x192">
    <title>Lil Baghdad | Iraqi Cuisine</title>
    <link rel="shortcut icon" href="images/favicon.ico">
    <link rel="icon" href="images/icon.png" sizes="192x192">
-   <script src="https://kit.fontawesome.com/c555409303.js" defer crossorigin="anonymous"></script>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;600&display=swap">
+   <style>
+      html,
+      body {
+         font-family: 'Roboto Flex', system-ui, sans-serif;
+         background: #292a2d;
+         color: #e1e3e5;
+         font-size: 16px;
+         scroll-behavior: smooth;
+         overscroll-behavior: contain;
+         text-rendering: optimizeLegibility;
+         touch-action: manipulation;
+         user-select: none;
+         -ms-touch-action: manipulation;
+         -webkit-font-smoothing: antialiased;
+         -webkit-text-size-adjust: 100%;
+         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+         -webkit-user-select: none;
+      }
+
+      section li {
+         height: 5.625rem;
+      }
+   </style>
    <link rel="stylesheet" href="style.css">
 </head>
 <body>
    <header>
       <div class="image-wrapper">
-         <img src="images/logo.png" width="140px" height="96px" alt="Lil Baghdad food truck header logo">
+         <img src="images/logo.png" width="180px" height="123px" alt="Lil Baghdad food truck header logo">
       </div>
    </header>
    <nav>
       <ul>
-         <li class="appetizers active"><a href="#appetizers" aria-label="Appetizers navigation tab" tabindex="0">Appetizers</a></li>
+         <li class="appetizers active"><a href="#appetizers" aria-label="Appetizers navigation tab">Appetizers</a></li>
          <li class="dishes"><a href="#dishes" aria-label="Dishes navigation tab">Dishes</a></li>
          <li class="desserts"><a href="#desserts" aria-label="Desserts navigation tab">Desserts</a></li>
          <li class="drinks"><a href="#drinks" aria-label="Drinks navigation tab">Drinks</a></li>
@@ -44,13 +68,13 @@
    </main>
    <footer>
       <div class="image-wrapper">
-         <img src="images/logo.png" width="190px" height="130px" alt="Lil Baghdad food truck footer logo" loading="lazy">
+         <img src="images/logo.png" width="240px" height="164px" alt="Lil Baghdad food truck footer logo">
       </div>
       <ul>
-         <li><a href="https://www.facebook.com/profile.php?id=100074970285412/" aria-label="Lil Baghdad Facebook link"><i class="fa-brands fa-facebook"></i></a></li>
-         <li><a href="https://www.instagram.com/desireddishes/" aria-label="Lil Baghdad Instagram link"><i class="fa-brands fa-instagram"></i></a></li>
-         <li><a href="https://maps.app.goo.gl/xj666i6ocinxPxfS9" aria-label="Lil Baghdad Google link"><i class="fa-brands fa-google"></i></a></li>
-         <li><a href="tel:(512)-300-9655" aria-label="Lil Baghdad Telephone Number link"><i class="fa-solid fa-phone"></i></a></li>
+         <li><a href="https://www.facebook.com/profile.php?id=100074970285412/" aria-label="Lil Baghdad Facebook link"></a></li>
+         <li><a href="https://www.instagram.com/desireddishes/" aria-label="Lil Baghdad Instagram link"></a></li>
+         <li><a href="https://maps.app.goo.gl/xj666i6ocinxPxfS9" aria-label="Lil Baghdad Google link"></a></li>
+         <li><a href="tel:(512)-300-9655" aria-label="Lil Baghdad Telephone Number link"></a></li>
       </ul>
       <p>&copy; 2022 Jeffrey Claybrook</p>
    </footer>
@@ -58,7 +82,7 @@
       <div class="modal-inner">
          <div class="modal-header">
             <img>
-            <button class="close-btn" aria-label="Close modal window"><i class="fa-solid fa-xmark"></i></button>
+            <button type="button" class="close-btn" aria-label="Close modal window"></button>
          </div>
          <div class="modal-body">
             <h3></h3>

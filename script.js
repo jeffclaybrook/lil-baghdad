@@ -185,7 +185,7 @@ appetizers.forEach(item => {
         <h4 data-price="${item.price}">${item.price}</h4>
     </div>
     <div class="item-image">
-        <img data-image="${item.image}" src="images/${item.image}" width="90px" height="90px" alt="${item.description}">
+        <img data-src="images/${item.image}" src="images/${item.image}" width="90px" height="90px" alt="${item.description}">
     </div>`;
     document.querySelector('#appetizers ul').appendChild(liTag);
 })
@@ -200,7 +200,7 @@ dishes.forEach(item => {
         <h4 data-price="${item.price}">${item.price}</h4>
     </div>
     <div class="item-image">
-        <img data-image="${item.image}" src="images/${item.image}" width="90px" height="90px" alt="${item.description}">
+        <img data-src="images/${item.image}" src="images/${item.image}" width="90px" height="90px" alt="${item.description}" loading="lazy">
     </div>`;
     document.querySelector('#dishes ul').appendChild(liTag);
 })
@@ -215,7 +215,7 @@ desserts.forEach(item => {
         <h4 data-price="${item.price}">${item.price}</h4>
     </div>
     <div class="item-image">
-        <img data-image="${item.image}" src="images/${item.image}" width="90px" height="90px" alt="${item.description}">
+        <img data-src="images/${item.image}" src="images/${item.image}" width="90px" height="90px" alt="${item.description}" loading="lazy">
     </div>`;
     document.querySelector('#desserts ul').appendChild(liTag);
 })
@@ -230,7 +230,7 @@ drinks.forEach(item => {
         <h4 data-price="${item.price}">${item.price}</h4>
     </div>
     <div class="item-image">
-        <img data-image="${item.image}" src="images/${item.image}" width="90px" height="90px" alt="${item.description}">
+        <img data-src="images/${item.image}" src="images/${item.image}" width="90px" height="90px" alt="${item.description}" loading="lazy">
     </div>`;
     document.querySelector('#drinks ul').appendChild(liTag);
 })
@@ -270,7 +270,7 @@ sections.forEach(section => {
         const name = e.target.closest('li').querySelector('h3').getAttribute('data-name');
         const description = e.target.closest('li').querySelector('p').getAttribute('data-description');
         const price = e.target.closest('li').querySelector('h4').getAttribute('data-price');
-        const image = e.target.closest('li').querySelector('img').getAttribute('src');
+        const image = e.target.closest('li').querySelector('img').getAttribute('data-src');
 
         document.querySelector('.modal-body h3').innerText = `${name}`;
         document.querySelector('.modal-body p').innerText = `${description}`;

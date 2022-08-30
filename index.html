@@ -2,81 +2,80 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="robots" content="index,follow">
    <meta name="googlebot" content="index,follow">
    <meta name="mobile-web-app-capable" content="yes">
-   <meta name="theme-color" content="#292a2d">
-   <meta name="description" content="Lil Baghdad food truck online menu">
-   <meta name="subject" content="Lil Baghdad food truck menu">
    <meta name="apple-mobile-web-app-capable" content="yes">
    <meta name="apple-mobile-web-app-title" content="Lil Baghdad | Iraqi Cuisine">
    <meta name="apple-mobile-web-app-status-bar-style" content="#292a2d">
-   <link rel="apple-touch-icon" href="images/icon.png" sizes="192x192">
-   <link rel="apple-touch-startup-image" href="images/icon.png" sizes="192x192">
+   <meta name="theme-color" content="#292a2d">
+   <meta name="description" content="Lil Baghdad food truck online menu">
    <title>Lil Baghdad | Iraqi Cuisine</title>
    <link rel="shortcut icon" href="images/favicon.ico">
-   <link rel="icon" href="images/icon.png" sizes="192x192">
+   <link rel="icon" href="images/icon.png" size="192x192">
+   <link rel="apple-touch-icon" href="images/icon.png" size="192x192">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;600&display=swap">
    <style>
-      html,
-      body {
-         font-family: 'Roboto Flex', system-ui, sans-serif;
-         background: #292a2d;
-         color: #e1e3e5;
-         font-size: 16px;
-         scroll-behavior: smooth;
-         overscroll-behavior: contain;
-         text-rendering: optimizeLegibility;
-         touch-action: manipulation;
-         user-select: none;
-         -ms-touch-action: manipulation;
-         -webkit-font-smoothing: antialiased;
-         -webkit-text-size-adjust: 100%;
-         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-         -webkit-user-select: none;
+      * {
+         box-sizing: border-box;
+         margin: 0;
+         padding: 0;
       }
 
-      section li {
-         height: 5.625rem;
+      *::before,
+      *::after {
+         box-sizing: inherit;
+      }
+
+      html,
+      body {
+         height: 100%;
+         margin: 0;
+         scroll-behavior: smooth;
+         overscroll-behavior: contain;
       }
    </style>
    <link rel="stylesheet" href="style.css">
 </head>
 <body>
    <header>
-      <div class="image-wrapper">
-         <img src="images/logo.png" width="180px" height="123px" alt="Lil Baghdad food truck header logo">
+      <div class="header-inner">
+         <a href="index.html" class="image-wrapper">
+            <img src="images/logo.png" width="180px" height="123px">
+         </a>
       </div>
    </header>
    <nav>
       <ul>
-         <li class="appetizers active"><a href="#appetizers" aria-label="Appetizers navigation tab">Appetizers</a></li>
-         <li class="dishes"><a href="#dishes" aria-label="Dishes navigation tab">Dishes</a></li>
-         <li class="desserts"><a href="#desserts" aria-label="Desserts navigation tab">Desserts</a></li>
-         <li class="drinks"><a href="#drinks" aria-label="Drinks navigation tab">Drinks</a></li>
+         <li class="appetizers active"><a href="#appetizers">Appetizers</a></li>
+         <li class="dishes"><a href="#dishes">Dishes</a></li>
+         <li class="desserts"><a href="#desserts">Desserts</a></li>
+         <li class="drinks"><a href="#drinks">Drinks</a></li>
       </ul>
    </nav>
    <main>
-      <section id="appetizers" aria-labelledby="appetizers-section"></section>
-      <section id="dishes" aria-labelledby="dishes-section"></section>
-      <section id="desserts" aria-labelledby="desserts-section"></section>
-      <section id="drinks" aria-labelledby="drinks-section"></section>
+      <section id="appetizers"></section>
+      <section id="dishes"></section>
+      <section id="desserts"></section>
+      <section id="drinks"></section>
    </main>
    <footer>
-      <div class="image-wrapper">
-         <img src="images/logo.png" width="240px" height="164px" alt="Lil Baghdad food truck footer logo">
+      <div class="footer-inner">
+         <a href="index.html" class="image-wrapper">
+            <img src="images/logo.png" width="180px" height="123px">
+         </a>
+         <ul>
+            <li><a href="https://www.facebook.com/profile.php?id=100074970285412/"></a></li>
+            <li><a href="https://www.instagram.com/desireddishes/"></a></li>
+            <li><a href="https://maps.app.goo.gl/xj666i6ocinxPxfS9"></a></li>
+            <li><a href="tel:(512)-300-9655"></a></li>
+         </ul>
+         <p>&copy; 2022 Jeffrey Claybrook</p>
       </div>
-      <ul>
-         <li><a href="https://www.facebook.com/profile.php?id=100074970285412/" aria-label="Lil Baghdad Facebook link"></a></li>
-         <li><a href="https://www.instagram.com/desireddishes/" aria-label="Lil Baghdad Instagram link"></a></li>
-         <li><a href="https://maps.app.goo.gl/xj666i6ocinxPxfS9" aria-label="Lil Baghdad Google link"></a></li>
-         <li><a href="tel:(512)-300-9655" aria-label="Lil Baghdad Telephone Number link"></a></li>
-      </ul>
-      <p>&copy; 2022 Jeffrey Claybrook</p>
    </footer>
    <aside class="hidden">
       <div class="modal-inner">

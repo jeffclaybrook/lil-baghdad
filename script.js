@@ -164,6 +164,23 @@ tabs.forEach((tab, index) => {
     })
 })
 
+document.querySelector('header .image-wrapper').setAttribute('aria-label', 'Lil Baghdad header home link');
+document.querySelector('footer .image-wrapper').setAttribute('aria-label', 'Lil Baghdad footer home link');
+
+document.querySelector('header .image-wrapper img').setAttribute('alt', 'Lil Baghdad header logo')
+document.querySelector('footer .image-wrapper img').setAttribute('alt', 'Lil Baghdad footer logo')
+
+document.querySelector('nav li:nth-child(1) a').setAttribute('aria-label', 'Lil Baghdad appetizers navigation tab');
+document.querySelector('nav li:nth-child(2) a').setAttribute('aria-label', 'Lil Baghdad dishes navigation tab');
+document.querySelector('nav li:nth-child(3) a').setAttribute('aria-label', 'Lil Baghdad desserts navigation tab');
+document.querySelector('nav li:nth-child(4) a').setAttribute('aria-label', 'Lil Baghdad drinks navigation tab');
+
+document.querySelector('footer li:nth-child(1) a').setAttribute('aria-label', 'Lil Baghdad Facebook link')
+document.querySelector('footer li:nth-child(2) a').setAttribute('aria-label', 'Lil Baghdad Instagram link')
+document.querySelector('footer li:nth-child(3) a').setAttribute('aria-label', 'Lil Baghdad Google link')
+document.querySelector('footer li:nth-child(4) a').setAttribute('aria-label', 'Lil Baghdad Phone Number link')
+
+
 const sections = document.querySelectorAll('section');
 sections.forEach(section => {
     const id = section.getAttribute('id');
@@ -171,6 +188,7 @@ sections.forEach(section => {
     const ulTag = document.createElement('ul');
     title.innerText = `${id}`;
     title.setAttribute('id', `${id}-section`);
+    section.setAttribute('aria-labelledby', `${id}-section`);
     section.appendChild(title);
     section.appendChild(ulTag);
 })

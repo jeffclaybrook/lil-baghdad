@@ -1,16 +1,14 @@
-* {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
-}
-
-*::before,
-*::after {
-   box-sizing: inherit;
-}
-
 body {
+   font-family: 'Roboto Flex', system-ui, sans-serif;
+   background: #292a2d;
+   color: #e1e3e5;
+   font-size: 16px;
+   text-rendering: optimizeLegibility;
+   text-size-adjust: 100%;
    width: 100%;
+   -webkit-font-smoothing: antialiased;
+   -webkit-text-size-adjust: 100%;
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 img {
@@ -49,25 +47,31 @@ header {
    position: relative;
 }
 
+header .header-inner {
+   padding: 1rem;
+}
+
 header .image-wrapper {
    display: flex;
    align-items: center;
    justify-content: center;
-   width: 180px;
-   height: 123px;
-   margin: .5rem auto;
+   max-height: 123px;
 }
 
 header .image-wrapper img {
    object-fit: cover;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 nav {
-   display: block;
+   display: flex;
+   align-items: flex-end;
+   justify-content: center;
    position: sticky;
-   -webkit-position: sticky;
-   width: 100%;
    top: 0;
+   width: 100%;
    z-index: 1000;
    height: 3rem;
    background: #292a2d;
@@ -80,7 +84,7 @@ nav ul {
    justify-content: space-between;
    max-width: 900px;
    width: 100%;
-   height: 3rem;
+   height: 100%;
    margin: 0 auto;
 }
 
@@ -88,43 +92,32 @@ nav li {
    display: flex;
    align-items: center;
    justify-content: space-between;
-   text-align: center;
    position: relative;
-   z-index: 1000;
    height: 3rem;
+   font-size: 1rem;
+   font-weight: 500;
 }
 
 nav li::after {
    position: absolute;
    content: "";
    bottom: 0;
-   left: 0;
    height: .1875rem;
-   width: -webkit-fill-available;
+   width: 100%;
    border-top-left-radius: .25rem;
    border-top-right-radius: .25rem;
 }
 
 nav li a {
    color: #e1e3e5;
-   font-size: 1rem;
-   font-weight: 500;
-   height: 3rem;
-   width: -webkit-fill-available;
-   text-align: center;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   position: relative;
-   z-index: 1001;
-}
-
-nav li.active a {
-   color: #76c7cd;
 }
 
 nav li.active::after {
    background: #76c7cd;
+}
+
+nav li.active a {
+   color: #76c7cd;
 }
 
 section {
@@ -139,7 +132,7 @@ section h2 {
    font-weight: 600;
    color: #e1e3e5;
    text-transform: capitalize;
-   margin-bottom: 1rem;
+   margin-bottom: .75rem;
 }
 
 section ul {
@@ -229,17 +222,26 @@ footer {
    position: relative;
 }
 
+footer .footer-inner {
+   padding: 2rem 0 1rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 1.5rem;
+}
+
 footer .image-wrapper {
    display: flex;
    align-items: center;
    justify-content: center;
-   width: 240px;
-   height: 164px;
-   margin: 2rem auto;
+   max-height: 123px;
 }
 
 footer .image-wrapper img {
    object-fit: cover;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 footer ul {
@@ -247,7 +249,6 @@ footer ul {
    align-items: center;
    justify-content: center;
    gap: 1.5rem;
-   margin-bottom: 2rem;
 }
 
 footer ul a {
@@ -256,25 +257,25 @@ footer ul a {
    justify-content: center;
    border: 1px solid #e1e3e5;
    color: #e1e3e5;
-   width: 3rem;
-   height: 3rem;
+   width: 3.25rem;
+   height: 3.25rem;
    border-radius: 50%;
 }
 
 footer ul li:nth-child(1) a {
-   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='16' height='16' fill='%23e1e3e5'%3E%3Cpath d='M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z'/%3E%3C/svg%3E") no-repeat center center / auto;
+   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='20' height='20' fill='%23e1e3e5'%3E%3Cpath d='M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z'/%3E%3C/svg%3E") no-repeat center center / auto;
 }
 
 footer ul li:nth-child(2) a {
-   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' width='16' height='16' fill='%23e1e3e5'%3E%3Cpath d='M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z'/%3E%3C/svg%3E") no-repeat center center / auto;
+   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' width='20' height='20' fill='%23e1e3e5'%3E%3Cpath d='M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z'/%3E%3C/svg%3E") no-repeat center center / auto;
 }
 
 footer ul li:nth-child(3) a {
-   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 488 512' width='16' height='16' fill='%23e1e3e5'%3E%3Cpath d='M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z'/%3E%3C/svg%3E") no-repeat center center / auto;
+   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 488 512' width='20' height='20' fill='%23e1e3e5'%3E%3Cpath d='M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z'/%3E%3C/svg%3E") no-repeat center center / auto;
 }
 
 footer ul li:nth-child(4) a {
-   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='16' height='16' fill='%23e1e3e5'%3E%3Cpath d='M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z'/%3E%3C/svg%3E") no-repeat center center / auto;
+   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='20' height='20' fill='%23e1e3e5'%3E%3Cpath d='M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z'/%3E%3C/svg%3E") no-repeat center center / auto;
 }
 
 footer p {
@@ -282,7 +283,6 @@ footer p {
    color: #e1e3e5;
    font-weight: 400;
    text-align: center;
-   padding-bottom: 1rem;
 }
 
 aside {
@@ -291,26 +291,27 @@ aside {
    left: 0;
    right: 0;
    bottom: 0;
-   background: rgba(0, 0, 0, 0.4);
+   background: rgba(0, 0, 0, 0.6);
    overflow: hidden;
    z-index: 1001;
-   display: block;
-   transition: all .15s;
    visibility: visible;
    pointer-events: auto;
+   opacity: 1;
+   display: block;
 }
 
 aside.hidden {
    visibility: hidden;
    pointer-events: none;
-   display: none;
+   transition: opacity 0.2s;
+   opacity: 0;
 }
 
 aside .modal-inner {
    position: fixed;
-   bottom: 50%;
+   top: 50%;
    left: 50%;
-   transform: translate(-50%, 50%);
+   transform: translate(-50%, -50%);
    background: #292a2d;
    max-width: 540px;
    width: 100%;
@@ -350,8 +351,8 @@ aside .modal-body {
    flex-direction: column;
    align-items: flex-start;
    justify-content: center;
-   gap: .5rem;
-   padding: 1rem 1.5rem;
+   gap: .75rem;
+   padding: 1.5rem;
 }
 
 aside .modal-body h3 {
@@ -379,7 +380,7 @@ aside .modal-body h4 {
    }
 
    main {
-      padding: 1rem .75rem;
+      padding: 0 .75rem;
    }
 
    section ul {
@@ -387,14 +388,8 @@ aside .modal-body h4 {
       gap: 1rem;
    }
 
-   aside .modal-inner {
-      bottom: 0;
-      transform: translate(-50%, 0);
-      max-width: 100%;
-   }
-
    aside .modal-header {
-      height: 18rem;
+      height: 16rem;
       display: flex;
       align-items: center;
    }
@@ -407,11 +402,11 @@ aside .modal-body h4 {
 
    aside .modal-body {
       gap: 1rem;
-      padding: 1.25rem;
+      padding: 1.5rem 1rem;
    }
 
    aside .modal-body h3 {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
    }
 
    aside .modal-body p {

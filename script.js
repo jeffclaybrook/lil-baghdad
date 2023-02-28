@@ -200,7 +200,7 @@ appetizers.forEach(item => {
         <h4 data-price="${item.price}">${item.price}</h4>
     </div>
     <div class="item-image">
-        <img data-image="${item.image}" src="${item.image}" alt="${item.name}">
+        <img data-image="${item.image}" src="${item.image}" alt="${item.name}" loading="lazy">
     </div>`;
     document.querySelector('#appetizers ul').appendChild(liTag);
 })
@@ -215,7 +215,7 @@ dishes.forEach(item => {
         <h4 data-price="${item.price}">${item.price}</h4>
     </div>
     <div class="item-image">
-        <img data-image="${item.image}" src="${item.image}" alt="${item.name}">
+        <img data-image="${item.image}" src="${item.image}" alt="${item.name}" loading="lazy">
     </div>`;
     document.querySelector('#dishes ul').appendChild(liTag);
 })
@@ -230,7 +230,7 @@ desserts.forEach(item => {
         <h4 data-price="${item.price}">${item.price}</h4>
     </div>
     <div class="item-image">
-        <img data-image="${item.image}" src="${item.image}" alt="${item.name}">
+        <img data-image="${item.image}" src="${item.image}" alt="${item.name}" loading="lazy">
     </div>`;
     document.querySelector('#desserts ul').appendChild(liTag);
 })
@@ -245,7 +245,7 @@ drinks.forEach(item => {
         <h4 data-price="${item.price}">${item.price}</h4>
     </div>
     <div class="item-image">
-        <img data-image="${item.image}" src="${item.image}" alt="${item.name}">
+        <img data-image="${item.image}" src="${item.image}" alt="${item.name}" loading="lazy">
     </div>`;
     document.querySelector('#drinks ul').appendChild(liTag);
 })

@@ -205,7 +205,7 @@ section:not(:last-of-type) ul {
 }
 
 .item h3 {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
     color: var(--text);
     text-overflow: ellipsis;
@@ -218,13 +218,13 @@ section:not(:last-of-type) ul {
 }
 
 .item h4 {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text);
 }
 
 .item p {
-    font-size: 1rem;
+    font-size: .875rem;
     font-weight: 400;
     color: var(--text-alt);
     line-height: 1.4;
@@ -326,8 +326,8 @@ footer p {
 }
 
 .loader h5 {
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: .875rem;
+    font-weight: 600;
     color: var(--text-alt);
 }
 
@@ -374,25 +374,22 @@ aside.visible {
     bottom: 0%;
     left: 0%;
     transform: scale(0.8);
-    max-width: 540px;
+    max-width: 500px;
     width: 100%;
     border-radius: .75rem;
 }
 
 aside.visible .modal-inner {
-    min-height: 65vh;
     transform: scale(1);
 }
 
 .modal-header {
     position: relative;
-    height: 55%;
 }
 
 .modal-header img {
     display: block;
     width: 100%;
-    height: 100%;
     object-fit: cover;
     border-radius: .5rem .5rem 0 0;
 }
@@ -405,8 +402,8 @@ aside.visible .modal-inner {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
+    width: 2.75rem;
+    height: 2.75rem;
     background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512' width='24' height='24' fill='%23292a2d'%3E%3Cpath d='M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z'/%3E%3C/svg%3E") no-repeat center center / auto;
 }
 
@@ -415,11 +412,10 @@ aside.visible .modal-inner {
     flex-direction: column;
     gap: .5rem;
     padding: 1.25rem;
-    height: 45%;
 }
 
 .modal-body h3 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 500;
     color: var(--text);
 }
@@ -434,7 +430,7 @@ aside.visible .modal-inner {
     font-size: 1.125rem;
     font-weight: 400;
     color: var(--text-alt);
-    line-height: 1.6;
+    line-height: 1.4;
     margin-bottom: auto;
 }
 

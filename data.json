@@ -27,19 +27,19 @@
         {
             "name": "Lahm Bajeen (1 Piece)",
             "description": "Grilled sour and sweet ground beef lays on homemade tortilla bread. This recipe was handed down by my mother, and it is a family favorite. The mix of the fresh tortilla and the ground beef flavored with my homemade spices makes this meal your favorite snack. Comes with pita bread and salad with hummus.",
-            "price": "6.99",
+            "price": "$6.99",
             "image": "images/breakfast-5.webp"
         },
         {
             "name": "Eggs & potatoes over beef shawarma plate",
             "description": "Eggs and potatoes are a nice combination for a hearty breakfast. This recipe features spicy home fries with classic scrambled eggs over our famous shawarma beef.",
-            "price": "15.99",
+            "price": "$15.99",
             "image": "images/breakfast-6.webp"
         },
         {
             "name": "Foul Medames",
             "description": "Simple and delicious Egyptian comfort food is usually served with pita. It is made of fava beans, freshly chopped vegetables, and spices. It is tangy and spicy with different textures of vegetables and some chunks of unmashed beans creating a perfect texture of smoothness and crunch.",
-            "price": "12.99",
+            "price": "$12.99",
             "image": "images/breakfast-7.webp"
         }
     ],

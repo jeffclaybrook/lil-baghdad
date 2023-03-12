@@ -35,6 +35,12 @@
             "description": "Eggs and potatoes are a nice combination for a hearty breakfast. This recipe features spicy home fries with classic scrambled eggs over our famous shawarma beef.",
             "price": "15.99",
             "image": "images/breakfast-6.webp"
+        },
+        {
+            "name": "Foul Medames",
+            "description": "Simple and delicious Egyptian comfort food is usually served with pita. It is made of fava beans, freshly chopped vegetables, and spices. It is tangy and spicy with different textures of vegetables and some chunks of unmashed beans creating a perfect texture of smoothness and crunch.",
+            "price": "12.99",
+            "image": "images/breakfast-7.webp"
         }
     ],
     "appetizers": [

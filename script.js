@@ -93,7 +93,7 @@ async function createMenu() {
             return `
             <li class="item" id="${id}" onclick="openDialog('${name}', '${description}', '${price}', '${image}')">
                 <div class="item-image">
-                    <img src="${image}" alt="${name}" style="aspect-ratio: 16 / 9" loading="lazy" />
+                    <img src="${image}" alt="${name}" loading="lazy" />
                 </div>
                 <div class="item-details">
                     <h3>${name}</h3>

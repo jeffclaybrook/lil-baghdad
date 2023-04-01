@@ -25,6 +25,7 @@ body {
     font-size: 16px;
     font-family: system-ui, sans-serif;
     scroll-behavior: smooth;
+    min-inline-size: 100%;
     background: var(--surface);
     color: var(--text);
 }
@@ -65,6 +66,42 @@ button {
     background: transparent;
 }
 
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--surface);
+    z-index: 1000;
+    pointer-events: none;
+    cursor: default;
+    display: none;
+}
+
+.loader.visible {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.loader .dots {
+    width: 2rem;
+    aspect-ratio: 1;
+    --bg: no-repeat radial-gradient(farthest-side, #767c81 94%, #0000);
+    background: var(--bg) 0 0, var(--bg) 100% 0, var(--bg) 100% 100%, var(--bg) 0 100%;
+    background-size: 40% 40%;
+    animation: loading .6s infinite;
+}
+
+.loader h5 {
+    font-size: .875rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
 header {
     display: flex;
     align-items: center;
@@ -93,7 +130,7 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 10;
 }
 
 nav ul {
@@ -162,6 +199,15 @@ section h2 {
     font-weight: 400;
     letter-spacing: .02em;
     padding: .75rem 0;
+}
+
+section > h5 {
+    font-weight: 400;
+    margin-bottom: .75rem;
+}
+
+section:first-of-type h2 {
+    padding: .75rem 0 .25rem;
 }
 
 .items {
@@ -302,102 +348,110 @@ footer p {
     text-align: center;
 }
 
-.loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--surface);
-    z-index: 1000;
-    pointer-events: none;
-    cursor: default;
-    display: none;
-}
-
-.loader.visible {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.loader .dots {
-    width: 2rem;
-    aspect-ratio: 1;
-    --bg: no-repeat radial-gradient(farthest-side, #767c81 94%, #0000);
-    background: var(--bg) 0 0, var(--bg) 100% 0, var(--bg) 100% 100%, var(--bg) 0 100%;
-    background-size: 40% 40%;
-    animation: loading .6s infinite;
-}
-
-.loader h5 {
-    font-size: .875rem;
-    font-weight: 500;
-    color: var(--text);
-}
-
 dialog {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    pointer-events: none;
-    overflow: hidden;
-    visibility: hidden;
-    display: flex;
+    inset-block-start: 0px;
+    inset-inline-start: 0px;
+    display: none;
     align-items: center;
     justify-content: center;
-    transition: opacity .2s;;
+    box-sizing: border-box;
+    block-size: 100%;
+    max-block-size: none;
+    inline-size: 100%;
+    max-inline-size: none;
+    margin: 0;
+    border: none;
     opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    background-color: transparent;
+    transition: opacity 0s ease 0s;
+    will-change: opacity;
 }
 
-dialog::before {
-    position: absolute;
-    content: '';
-    height: inherit;
-    width: inherit;
+dialog::backdrop {
+    display: none;
 }
 
-dialog.visible {
-    visibility: visible;
-    opacity: 1;
+dialog.expanded {
+    display: flex;
     pointer-events: auto;
-    background: rgba(0,0,0,0.7);
+    opacity: 1;
+    visibility: visible;
+    transition-duration: .15s;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
-.modal-inner {
-    position: relative;
-    bottom: 0%;
-    left: 0%;
-    transform: scale(0.8);
-    max-width: 540px;
-    width: 100%;
-    border-radius: .75rem;
-    background: var(--surface);
+.dialog-scrim {
+    position: fixed;
+    inset: 0px;
+    overflow-y: scroll;
+    overscroll-behavior: contain;
+    block-size: 100%;
+    inline-size: 100%;
+    pointer-events: inherit;
+    visibility: visible;
+    z-index: 1000;
+    background: rgba(0, 0, 0, .6);
+    -webkit-tap-highlight-color: transparent;
 }
 
-dialog.visible .modal-inner {
-    transform: scale(1);
-}
-
-.modal-header {
-    position: relative;
-}
-
-.modal-header img {
+.dialog-scrim::after {
+    content: '';
     display: block;
+    block-size: 200%;
+    inline-size: 200%;
+}
+
+.dialog-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    max-block-size: 80%;
+    max-inline-size: 700px;
+    flex-shrink: 1;
+    transform: scale(1);
+    transform-origin: center bottom;
+    z-index: 1000;
+    background: var(--surface);
+    will-change: display, transform;
+}
+
+dialog.expanded .dialog-container {
+    animation-name: scaleUp;
+    animation-duration: .15s;
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0)
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.dialog-header img {
+    display: block;
+    object-fit: cover;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: .5rem .5rem 0 0;
-    aspect-ratio: 16 / 9;
 }
 
-.modal-header button {
+.dialog-header button {
     position: absolute;
     top: .5rem;
     right: .5rem;
@@ -410,26 +464,27 @@ dialog.visible .modal-inner {
     background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512' width='24' height='24' fill='%23292a2d'%3E%3Cpath d='M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z'/%3E%3C/svg%3E") no-repeat center center / auto;
 }
 
-.modal-body {
+.dialog-body {
     display: flex;
     flex-direction: column;
     gap: .5rem;
     padding: 1.25rem;
+    block-size: fit-content;
 }
 
-.modal-body h3 {
+.dialog-body h3 {
     font-size: 1.175rem;
     font-weight: 500;
     color: var(--text);
 }
 
-.modal-body h4 {
+.dialog-body h4 {
     font-size: 1rem;
     font-weight: 500;
     color: var(--text);
 }
 
-.modal-body p {
+.dialog-body p {
     font-size: .975rem;
     font-weight: 400;
     color: var(--text-alt);
@@ -473,5 +528,15 @@ dialog.visible .modal-inner {
 
     .item-details p {
         font-size: .975rem;
+    }
+
+    .dialog-container {
+        min-inline-size: 720px;
+        block-size: 85%;
+        border-radius: .5rem;
+    }
+
+    .dialog-header img {
+        border-radius: .5rem .5rem 0 0;
     }
 }

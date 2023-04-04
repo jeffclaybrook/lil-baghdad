@@ -4,23 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="Lil Baghdad food truck online menu for authentic Iraqi cuisine">
+    <meta name="twitter:description" content="Lil Baghdad food truck online menu for authentic Iraqi cuisine">
+    <meta name="twitter:title" content="Lil Baghdad">
+    <meta name="twitter:image" content="images/food-truck.jpeg">
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="google-site-verification" content="iL8Xo8AQv5mAH2Uyxfrxkwnac2K2y6MV2YJX2TKsURo" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Lil Baghdad | Iraqi Cuisine">
+    <meta name="apple-mobile-web-app-title" content="Lil Baghdad">
     <meta name="apple-mobile-web-app-status-bar-style" content="#292a2d">
     <meta name="theme-color" content="#292a2d">
-    <meta name="description" content="Lil Baghdad food truck online menu">
+    <meta name="author" content="Jeffrey Claybrook" />
+    <meta property="og:description" content="Lil Baghdad food truck online menu for authentic Iraqi cuisine">
+    <meta property="og:title" content="Lil Baghdad">
+    <meta property="og:site_name" content="Lil Baghdad">
+    <meta property="og:image" content="images/food-truck.jpeg">
+    <meta property="og:url" content="https://lil-baghdad.netlify.app/">
     <title>Lil Baghdad Iraqi Cuisine</title>
+    <link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..600&display=swap" as="style">
     <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="icon" href="images/icon.png" size="192x192">
-    <link rel="apple-touch-icon" href="images/icon.png" size="192x192">
+    <link rel="icon" sizes="192x192" href="images/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="images/icon-192x192.png">
     <link rel="canonical" href="https://lil-baghdad.netlify.app/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..600&display=swap">
+    <style>
+        body {
+            font-family: 'Figtree', system-ui, sans-serif;
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,29 +55,23 @@
         </header>
         <nav>
             <ul id="tabs">
-                <li class="breakfast active"><a href="#breakfast">Breakfast</a></li>
-                <li class="appetizers"><a href="#appetizers">Appetizers</a></li>
+                <li class="appetizers active"><a href="#appetizers">Appetizers</a></li>
                 <li class="dishes"><a href="#dishes">Dishes</a></li>
+                <li class="breakfast"><a href="#breakfast">Breakfast</a></li>
                 <li class="desserts"><a href="#desserts">Desserts</a></li>
                 <li class="drinks"><a href="#drinks">Drinks</a></li>
             </ul>
         </nav>
-        <main>
-            <section id="breakfast"></section>
-            <section id="appetizers"></section>
-            <section id="dishes"></section>
-            <section id="desserts"></section>
-            <section id="drinks"></section>
-        </main>
+        <main></main>
         <footer>
             <div class="footer-inner">
                 <a href="index.html" aria-label="Lil Baghdad">
                     <img src="images/logo.png" width="180px" height="123px" alt="Lil Baghdad Iraqi Cuisine" loading="lazy">
                 </a>
                 <ul>
-                    <li><a href="https://www.facebook.com/profile.php?id=100074970285412/" target="_blank" aria-label="Lil Baghdad Facebook"></a></li>
-                    <li><a href="https://www.instagram.com/desireddishes/" target="_blank" aria-label="Lil Baghdad Instagram"></a></li>
-                    <li><a href="https://maps.app.goo.gl/xj666i6ocinxPxfS9" target="_blank" aria-label="Lil Baghdad Google"></a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100074970285412/" target="_blank" aria-label="Lil Baghdad on Facebook"></a></li>
+                    <li><a href="https://www.instagram.com/desireddishes/" target="_blank" aria-label="Lil Baghdad on Instagram"></a></li>
+                    <li><a href="https://goo.gl/maps/DjnmrwDQn6bWSLAj9" target="_blank" aria-label="Lil Baghdad on Google Maps"></a></li>
                     <li><a href="tel:(512)-300-9655" aria-label="Lil Baghdad Phone number"></a></li>
                 </ul>
                 <p>© 2023 Jeffrey Claybrook</p>

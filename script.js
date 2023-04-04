@@ -1,41 +1,62 @@
-const body = document.body;
-const dialog = document.querySelector('dialog');
-const client = contentful.createClient({
-    space: 'rmkbw43wse32',
-    accessToken: 'LH1A4Pbn5WMso-OgGWFmnBje0LY48PXd3d3rKLEsQ5c'
-})
-
-
-function createLoader() {
+function handleLoader() {
     const loader = document.querySelector('.loader');
     loader.innerHTML = `
     <div class="dots"></div>
-    <h5>Loading menu...</h5>
     `;
     setTimeout(() => {
         loader.classList.remove('visible');
-    }, 2500);
+    }, 2000)
 }
 
+function handleTabOnClick() {
+    const tabs = document.querySelectorAll('#tabs li');
+    tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(tab => tab.classList.remove('active'));
+            tabs[i].classList.add('active');
+        })
+    })
+}
 
-function closeDialog() {
+function handleTabOnScroll() {
+    const sections = document.querySelectorAll('section');
+    const tabs = document.querySelectorAll('#tabs li');
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.pageYOffset >= sectionTop - 50) {
+            current = section.getAttribute('id')
+        }
+    })
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.classList.contains(current)) {
+            tab.classList.add('active')
+        }
+    })
+}
+
+function handleDialogOnClose() {
+    const dialog = document.querySelector('dialog');
+    const body = document.querySelector('body');
+    body.style.overflow = 'auto';
     dialog.classList.remove('expanded');
     dialog.setAttribute('aria-hidden', 'true');
     dialog.querySelector('.dialog-container').innerHTML = '';
-    body.style.overflow = 'auto';
 }
 
-
-function openDialog(name, description, price, image) {
+function handleDialogOnOpen(category, description, image, name, price) {
+    const dialog = document.querySelector('dialog');
+    const body = document.querySelector('body');
     body.style.overflow = 'hidden';
     dialog.setAttribute('aria-hidden', 'false');
     dialog.classList.add('expanded');
     dialog.querySelector('.dialog-container').innerHTML += `
-    <div class="dialog-header">
-        <img src="${image}" alt="${name}" loading="lazy">
-        <button type="button" aria-label="Close menu item" onclick="closeDialog()"></button>
+    <div class="dialog-header" style="background-image: url('${image}')">
+        <button type="button" aria-label="Close menu item" onclick="handleDialogOnClose()"></button>
     </div>
     <div class="dialog-body">
+        <h5>${category}</h5>
         <h3>${name}</h3>
         <p>${description}</p>
         <h4>${price}</h4>
@@ -43,57 +64,31 @@ function openDialog(name, description, price, image) {
     `;
 }
 
-
-function handleTabClick() {
-    const tabs = document.querySelectorAll('#tabs li');
-    tabs.forEach((tab, i) => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
-            })
-            tabs[i].classList.add('active');
-        })
-    })
-}
-
-
-async function createMenu() {
-    const data = await getData();
-
-    const categories = [
-        breakfast = data.filter(el => el.category == 'Breakfast'),
-        appetizers = data.filter(el => el.category == 'Appetizers'),
-        dishes = data.filter(el => el.category == 'Dishes'),
-        desserts = data.filter(el => el.category == 'Desserts'),
-        drinks = data.filter(el => el.category == 'Drinks')
-    ]
-
-    const labels = ['Breakfast', 'Appetizers', 'Dishes', 'Desserts', 'Drinks'];
-    const subLabel = `All Day, Saturdays Only`;
-    const sections = document.querySelectorAll('section');
-
-    sections.forEach((section, i) => {
+function createMenu(data) {
+    const appetizers = data.filter(item => item.category === 'Appetizers');
+    const dishes = data.filter(item => item.category === 'Dishes');
+    const breakfast = data.filter(item => item.category === 'Breakfast');
+    const desserts = data.filter(item => item.category === 'Desserts');
+    const drinks = data.filter(item => item.category === 'Drinks');
+    const menu = [appetizers, dishes, breakfast, desserts, drinks];
+    const labels = ['appetizers', 'dishes', 'breakfast', 'desserts', 'drinks'];
+    const main = document.querySelector('main');
+    menu.map((items, i) => {
+        const section = document.createElement('section');
         const h2 = document.createElement('h2');
-        h2.innerText = labels[i];
-        section.appendChild(h2);
-    })
-
-
-    const h5 = document.createElement('h5');
-    h5.innerText = `${subLabel}`;
-    sections[0].appendChild(h5);
-
-
-    categories.map((category, i) => {
         const ul = document.createElement('ul');
+        main.appendChild(section);
+        section.appendChild(h2);
+        section.appendChild(ul);
+        section.setAttribute('id', `${labels[i]}`);
+        h2.innerText = `${labels[i]}`;
         ul.classList.add('items');
-        sections[i].appendChild(ul);
-        ul.innerHTML = category.map(li => {
-            const { name, description, price, image, id } = li;
+        ul.innerHTML += items.map(li => {
+            const { category, description, id, image, name, price } = li;
             return `
-            <li class="item" id="${id}" onclick="openDialog('${name}', '${description}', '${price}', '${image}')">
+            <li class="item" id="${id}" onclick="handleDialogOnOpen('${category}', '${description}', '${image}', '${name}', '${price}')">
                 <div class="item-image">
-                    <img src="${image}" alt="${name}" loading="lazy" />
+                    <img src="${image}" alt="${name}" style="aspect-ratio: 16 / 10" loading="lazy" />
                 </div>
                 <div class="item-details">
                     <h3>${name}</h3>
@@ -102,52 +97,51 @@ async function createMenu() {
                 </div>
             </li>
             `
-        }).join('')
+        }).join('');
     })
 }
 
-
-createMenu()
-
+function createSubLabel() {
+    const subLabel = `All Day, Saturdays Only`;
+    const section = document.querySelector('#breakfast h2');
+    const h3 = document.createElement('h3');
+    h3.innerText = `${subLabel}`;
+    section.insertAdjacentElement('afterend', h3);
+}
 
 async function getData() {
-    createLoader()
+    handleLoader();
+    
+    const client = contentful.createClient({
+        space: 'rmkbw43wse32',
+        accessToken: 'LH1A4Pbn5WMso-OgGWFmnBje0LY48PXd3d3rKLEsQ5c'
+    })
+
     try {
         const res = await client.getEntries({ content_type: 'lilBaghdad' });
         const data = await res.items;
         const items = data.map(item => {
-            const { name, description, price, category, id } = item.fields;
+            const { category, description, id, name, price } = item.fields;
             const image = item.fields.image.fields.file.url;
-            return { name, description, price, category, image, id };
+            return { category, description, id, image, name, price }
         })
-        return items;
+        return items
     } catch {
-        app.innerHTML = `
-        <h2>Ooops! We're having trouble loading this page</h2>
+        document.querySelector('#app').innerHTML = `
+        <h1>Ooops! We're having trouble loading the menu</h1>
         `
     }
 }
 
-
-handleTabClick();
-
-
-window.onscroll = () => {
-    let current = '';
-
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (window.pageYOffset >= sectionTop - 60) {
-            current = section.getAttribute('id')
-        }
-    })
-
-    const tabs = document.querySelectorAll('#tabs li');
-    tabs.forEach(tab => {
-        tab.classList.remove('active');
-        if (tab.classList.contains(current)) {
-            tab.classList.add('active')
-        }
-    })
+async function initApp() {
+    const data = await getData();
+    createMenu(data);
+    handleTabOnClick();
+    createSubLabel();
 }
+
+window.addEventListener('scroll', () => {
+    handleTabOnScroll()
+})
+
+initApp()

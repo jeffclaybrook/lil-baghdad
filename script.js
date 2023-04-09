@@ -1,5 +1,3 @@
-initApp()
-
 function createLoader() {
     const loader = document.querySelector('aside');
     setTimeout(() => {
@@ -145,6 +143,8 @@ async function initApp() {
         `
     }
 }
+
+initApp();
 
 window.addEventListener('scroll', () => {
     handlePageScroll()

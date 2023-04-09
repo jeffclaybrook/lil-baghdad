@@ -4,6 +4,7 @@ const assets = [
     '/index.html',
     '/style.css',
     '/script.js',
+    '/images/logo.png',
     'https://fonts.googleapis.com/css2?family=Figtree:wght@300..600&display=swap'
 ]
 

@@ -73,6 +73,7 @@ aside {
     right: 0;
     bottom: 0;
     background: var(--surface-100);
+    block-size: 100%;
     z-index: 5;
     pointer-events: none;
     cursor: default;
@@ -352,7 +353,7 @@ dialog {
     left: 0;
     inset-block-start: 0px;
     inset-inline-start: 0px;
-    padding: 0 .5rem;
+    padding: 0 .25rem;
     display: none;
     align-items: center;
     justify-content: center;

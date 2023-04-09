@@ -1,9 +1,11 @@
+initApp()
+
 function createLoader() {
     const loader = document.querySelector('aside');
     setTimeout(() => {
         loader.classList.remove('visible');
         loader.innerHTML = '';
-    }, 2000);
+    }, 2000)
 }
 
 function closeModal() {
@@ -36,7 +38,7 @@ function createModal(image, category, name, description, price) {
             <h4>${price}</h4>
         </div>
     </div>
-    `;
+    `
 }
 
 function handleTabClick() {
@@ -56,13 +58,13 @@ function handlePageScroll() {
     articles.forEach(article => {
         const articleTop = article.offsetTop;
         if (window.pageYOffset >= articleTop - 50) {
-            current = article.getAttribute('id');
+            current = article.getAttribute('id')
         }
     })
     tabs.forEach(tab => {
         tab.classList.remove('active');
         if (tab.classList.contains(current)) {
-            tab.classList.add('active');
+            tab.classList.add('active')
         }
     })
 }
@@ -76,7 +78,7 @@ function createCategories(data) {
     return [appetizers, dishes, breakfast, desserts, drinks];
 }
 
-function createSections() {
+function createArticles() {
     const labels = ['Appetizers', 'Dishes', 'Breakfast', 'Desserts', 'Drinks'];
     const subLabel = `All Day, Saturdays Only`;
     const articles = document.querySelectorAll('article');
@@ -84,7 +86,6 @@ function createSections() {
         const h2 = document.createElement('h2');
         const ul = document.createElement('ul');
         h2.innerText = labels[i];
-        ul.classList.add('items');
         article.appendChild(h2);
         article.appendChild(ul);
     })
@@ -98,10 +99,10 @@ function createItems(data) {
     const categories = createCategories(data);
     const ul = document.querySelectorAll('article ul');
     categories.map((items, i) => {
-        ul[i].innerHTML += items.map(li => {
-            const { image, category, name, description, price } = li;
+        ul[i].innerHTML += items.map(item => {
+            const { image, category, name, description, price } = item;
             return `
-            <li class="item" onclick="createModal('${image}', '${category}', '${name}', '${description}', '${price}')">
+            <li onclick="createModal('${image}', '${category}', '${name}', '${description}', '${price}')">
                 <div class="item-image">
                     <img src="${image}" alt="${name}" style="aspect-ratio: 16 / 10" loading="lazy">
                 </div>
@@ -112,7 +113,7 @@ function createItems(data) {
                 </div>
             </li>
             `
-        }).join('');
+        }).join('')
     })
 }
 
@@ -121,15 +122,23 @@ async function getData() {
         space: 'rmkbw43wse32',
         accessToken: 'LH1A4Pbn5WMso-OgGWFmnBje0LY48PXd3d3rKLEsQ5c'
     })
+    const res = await client.getEntries({ content_type: 'lilBaghdad' });
+    const data = await res.items;
+    const items = data.map(item => {
+        const { category, description, name, price } = item.fields;
+        const image = item.fields.image.fields.file.url;
+        return { category, description, name, price, image }
+    })
+    return items
+}
+
+async function initApp() {
+    createLoader();
     try {
-        const res = await client.getEntries({ content_type: 'lilBaghdad' });
-        const data = await res.items;
-        const items = data.map(item => {
-            const { category, description, name, price } = item.fields;
-            const image = item.fields.image.fields.file.url;
-            return { category, description, name, price, image };
-        })
-        return items;
+        const data = await getData();
+        createArticles();
+        createItems(data);
+        handleTabClick();
     } catch {
         document.querySelector('main').innerHTML = `
         <h1>Ooops! We're having trouble loading the menu</h1>
@@ -137,18 +146,8 @@ async function getData() {
     }
 }
 
-async function initApp() {
-    createLoader();
-    const data = await getData();
-    handleTabClick();
-    createSections();
-    createItems(data);
-}
-
-initApp()
-
 window.addEventListener('scroll', () => {
-    handlePageScroll();
+    handlePageScroll()
 })
 
 if ('serviceWorker' in navigator) {

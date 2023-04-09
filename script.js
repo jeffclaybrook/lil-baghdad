@@ -89,9 +89,9 @@ function createSections() {
         article.appendChild(ul);
     })
     const h2 = articles[2].querySelector('h2');
-    const h5 = document.createElement('h5');
-    h5.innerText = subLabel;
-    h2.insertAdjacentElement('afterend', h5);
+    const h3 = document.createElement('h3');
+    h3.innerText = subLabel;
+    h2.insertAdjacentElement('afterend', h3);
 }
 
 function createItems(data) {

@@ -1,14 +1,47 @@
-function handleLoader() {
+function createLoader() {
     const loader = document.querySelector('.loader');
     loader.innerHTML = `
+    <img src="images/logo.png" alt="Lil Baghdad" width="146px" height="100px">
     <div class="dots"></div>
     `;
     setTimeout(() => {
         loader.classList.remove('visible');
-    }, 2000)
+        loader.innerHTML = '';
+    }, 2000);
 }
 
-function handleTabOnClick() {
+function closeModal() {
+    const body = document.querySelector('body');
+    const dialog = document.querySelector('dialog');
+    body.style.overflow = 'auto';
+    dialog.classList.remove('expanded');
+    dialog.setAttribute('aria-hidden', 'true');
+    dialog.innerHTML = '';
+}
+
+function createModal(image, category, name, description, price) {
+    const body = document.querySelector('body');
+    const dialog = document.querySelector('dialog');
+    body.style.overflow = 'hidden';
+    dialog.classList.add('expanded');
+    dialog.setAttribute('aria-hidden', 'false');
+    dialog.innerHTML += `
+    <div class="dialog-scrim"></div>
+    <div class="dialog-container">
+        <div class="dialog-header" style="background-image: url('${image}')">
+            <button type="button" aria-label="Close menu item" onclick="closeModal()"></button>
+        </div>
+        <div class="dialog-body">
+            <h5>${category}</h5>
+            <h3>${name}</h3>
+            <p>${description}</p>
+            <h4>${price}</h4>
+        </div>
+    </div>
+    `;
+}
+
+function handleTabClick() {
     const tabs = document.querySelectorAll('#tabs li');
     tabs.forEach((tab, i) => {
         tab.addEventListener('click', () => {
@@ -18,77 +51,61 @@ function handleTabOnClick() {
     })
 }
 
-function handleTabOnScroll() {
+function handlePageScroll() {
     const sections = document.querySelectorAll('section');
     const tabs = document.querySelectorAll('#tabs li');
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         if (window.pageYOffset >= sectionTop - 50) {
-            current = section.getAttribute('id')
+            current = section.getAttribute('id');
         }
     })
     tabs.forEach(tab => {
         tab.classList.remove('active');
         if (tab.classList.contains(current)) {
-            tab.classList.add('active')
+            tab.classList.add('active');
         }
     })
 }
 
-function handleDialogOnClose() {
-    const dialog = document.querySelector('dialog');
-    const body = document.querySelector('body');
-    body.style.overflow = 'auto';
-    dialog.classList.remove('expanded');
-    dialog.setAttribute('aria-hidden', 'true');
-    dialog.querySelector('.dialog-container').innerHTML = '';
-}
-
-function handleDialogOnOpen(category, description, image, name, price) {
-    const dialog = document.querySelector('dialog');
-    const body = document.querySelector('body');
-    body.style.overflow = 'hidden';
-    dialog.setAttribute('aria-hidden', 'false');
-    dialog.classList.add('expanded');
-    dialog.querySelector('.dialog-container').innerHTML += `
-    <div class="dialog-header" style="background-image: url('${image}')">
-        <button type="button" aria-label="Close menu item" onclick="handleDialogOnClose()"></button>
-    </div>
-    <div class="dialog-body">
-        <h5>${category}</h5>
-        <h3>${name}</h3>
-        <p>${description}</p>
-        <h4>${price}</h4>
-    </div>
-    `;
-}
-
-function createMenu(data) {
+function createCategories(data) {
     const appetizers = data.filter(item => item.category === 'Appetizers');
     const dishes = data.filter(item => item.category === 'Dishes');
     const breakfast = data.filter(item => item.category === 'Breakfast');
     const desserts = data.filter(item => item.category === 'Desserts');
     const drinks = data.filter(item => item.category === 'Drinks');
-    const menu = [appetizers, dishes, breakfast, desserts, drinks];
-    const labels = ['appetizers', 'dishes', 'breakfast', 'desserts', 'drinks'];
-    const main = document.querySelector('main');
-    menu.map((items, i) => {
-        const section = document.createElement('section');
+    return [appetizers, dishes, breakfast, desserts, drinks];
+}
+
+function createSections() {
+    const labels = ['Appetizers', 'Dishes', 'Breakfast', 'Desserts', 'Drinks'];
+    const subLabel = `All Day, Saturdays Only`;
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section, i) => {
         const h2 = document.createElement('h2');
         const ul = document.createElement('ul');
-        main.appendChild(section);
+        h2.innerText = labels[i];
+        ul.classList.add('items');
         section.appendChild(h2);
         section.appendChild(ul);
-        section.setAttribute('id', `${labels[i]}`);
-        h2.innerText = `${labels[i]}`;
-        ul.classList.add('items');
-        ul.innerHTML += items.map(li => {
-            const { category, description, id, image, name, price } = li;
+    })
+    const h2 = sections[2].querySelector('h2');
+    const h5 = document.createElement('h5');
+    h5.innerText = subLabel;
+    h2.insertAdjacentElement('afterend', h5);
+}
+
+function createItems(data) {
+    const categories = createCategories(data);
+    const ul = document.querySelectorAll('section ul');
+    categories.map((items, i) => {
+        ul[i].innerHTML += items.map(li => {
+            const { image, category, name, description, price } = li;
             return `
-            <li class="item" id="${id}" onclick="handleDialogOnOpen('${category}', '${description}', '${image}', '${name}', '${price}')">
+            <li class="item" onclick="createModal('${image}', '${category}', '${name}', '${description}', '${price}')">
                 <div class="item-image">
-                    <img src="${image}" alt="${name}" style="aspect-ratio: 16 / 10" loading="lazy" />
+                    <img src="${image}" alt="${name}" style="aspect-ratio: 16 / 10">
                 </div>
                 <div class="item-details">
                     <h3>${name}</h3>
@@ -101,31 +118,21 @@ function createMenu(data) {
     })
 }
 
-function createSubLabel() {
-    const subLabel = `All Day, Saturdays Only`;
-    const section = document.querySelector('#breakfast h2');
-    const h3 = document.createElement('h3');
-    h3.innerText = `${subLabel}`;
-    section.insertAdjacentElement('afterend', h3);
-}
-
 async function getData() {
-    handleLoader();
-    
+    createLoader();
     const client = contentful.createClient({
         space: 'rmkbw43wse32',
         accessToken: 'LH1A4Pbn5WMso-OgGWFmnBje0LY48PXd3d3rKLEsQ5c'
     })
-
     try {
         const res = await client.getEntries({ content_type: 'lilBaghdad' });
         const data = await res.items;
         const items = data.map(item => {
-            const { category, description, id, name, price } = item.fields;
+            const { category, description, name, price } = item.fields;
             const image = item.fields.image.fields.file.url;
-            return { category, description, id, image, name, price }
+            return { category, description, name, price, image };
         })
-        return items
+        return items;
     } catch {
         document.querySelector('#app').innerHTML = `
         <h1>Ooops! We're having trouble loading the menu</h1>
@@ -135,13 +142,22 @@ async function getData() {
 
 async function initApp() {
     const data = await getData();
-    createMenu(data);
-    handleTabOnClick();
-    createSubLabel();
+    handleTabClick();
+    createSections();
+    createItems(data);
 }
 
+initApp()
+
 window.addEventListener('scroll', () => {
-    handleTabOnScroll()
+    handlePageScroll();
 })
 
-initApp()
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+       navigator.serviceWorker
+       .register('serviceWorker.js')
+       .then(res => console.log('Service worker registered', res))
+       .catch(err => console.log('Service worker failed to register', err))
+    })
+}

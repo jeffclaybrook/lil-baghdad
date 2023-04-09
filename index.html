@@ -31,6 +31,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="images/icon-144x144.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180x180.png">
     <link rel="apple-touch-icon" sizes="192x192" href="images/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="images/icon-512x512.png">
     <link rel="canonical" href="https://lil-baghdad.netlify.app/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,9 +47,9 @@
     <div class="loader visible"></div>
     <div id="app">
         <header>
-            <div class="header-inner">
+            <a href="index.html" aria-label="Lil Baghdad home">
                 <img src="images/logo.png" alt="Lil Baghdad" width="146px" height="100px">
-            </div>
+            </a>
         </header>
         <nav>
             <ul id="tabs">
@@ -59,7 +60,13 @@
                 <li class="drinks"><a href="#drinks">Drinks</a></li>
             </ul>
         </nav>
-        <main></main>
+        <main>
+            <section id="appetizers"></section>
+            <section id="dishes"></section>
+            <section id="breakfast"></section>
+            <section id="desserts"></section>
+            <section id="drinks"></section>
+        </main>
         <footer>
             <div class="footer-inner">
                 <a href="index.html" aria-label="Lil Baghdad">
@@ -75,10 +82,7 @@
             </div>
         </footer>
     </div>
-    <dialog aria-modal="true" role="dialog" aria-hidden="true">
-        <div class="dialog-scrim"></div>
-        <div class="dialog-container"></div>
-    </dialog>
+    <dialog aria-modal="true" role="dialog" aria-hidden="true"></dialog>
     <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
     <script src="script.js"></script>
 </body>

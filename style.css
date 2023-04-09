@@ -213,7 +213,7 @@ section:nth-child(3) h2 {
     padding: .25rem 0;
 }
 
-section > h3 {
+section:nth-child(3) > h5 {
     font-size: .875rem;
     font-weight: 400;
     letter-spacing: .02em;

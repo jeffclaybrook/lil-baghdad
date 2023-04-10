@@ -37,18 +37,18 @@ function createLoader() {
 function createCategories(menu) {
     const appetizers = menu.filter(item => item.category === 'Appetizers');
     const dishes = menu.filter(item => item.category === 'Dishes');
+    const curry = menu.filter(item => item.category === 'Curry');
     const breakfast = menu.filter(item => item.category === 'Breakfast');
     const desserts = menu.filter(item => item.category === 'Desserts');
     const drinks = menu.filter(item => item.category === 'Drinks');
-    return [appetizers, dishes, breakfast, desserts, drinks];
+    return [appetizers, dishes, curry, breakfast, desserts, drinks];
 }
 
 function createArticles() {
-    const labels = ['Appetizers', 'Dishes', 'Breakfast', 'Desserts', 'Drinks'];
-    const subLabel = 'All Day, Saturdays Only';
+    const labels = ['Appetizers', 'Dishes', 'Curry', 'Breakfast', 'Desserts', 'Drinks'];
     const subLabels = ['Main dishes served with Pita bread', 'All day, Saturdays only'];
     const articles = document.querySelectorAll('article');
-    const subArticles = [articles[1], articles[2]];
+    const subArticles = [articles[1], articles[3]];
     articles.forEach((article, i) => {
         const h2 = document.createElement('h2');
         const ul = document.createElement('ul');

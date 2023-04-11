@@ -223,7 +223,7 @@ function onPageScroll() {
     let current = '';
     articles.forEach(article => {
         const articleTop = article.offsetTop;
-        if (window.pageYOffset >= articleTop - 150) {
+        if (window.pageYOffset >= articleTop - 60) {
             current = article.getAttribute('id');
         }
     })

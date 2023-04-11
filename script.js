@@ -1,31 +1,47 @@
-async function getMenu() {
+// Fetch data
+async function getMenuData() {
     const client = contentful.createClient({
         space: 'rmkbw43wse32',
         accessToken: 'LH1A4Pbn5WMso-OgGWFmnBje0LY48PXd3d3rKLEsQ5c'
     })
-    const res = await client.getEntries({ content_type: 'lilBaghdad' })
-    const data = await res.items;
-    const items = data.map(item => {
-        const { category, name, description, price } = item.fields;
-        const image = item.fields.image.fields.file.url;
-        return { category, name, description, price, image };
+    const res = await client.getEntries({
+        content_type: 'lilBaghdad'
     })
-    return items;
+    const data = await res.items;
+    const menu = data.map(item => {
+        const {
+            name,
+            description,
+            price,
+            category
+        } = item.fields;
+        const image = item.fields.image.fields.file.url;
+        return {
+            name,
+            description,
+            price,
+            category,
+            image
+        };
+    });
+    return menu;
 }
 
+// Initialize app
 async function initApp() {
     createLoader();
     try {
-        const data = await getMenu();
-        createMenu(data);
-        onTabClick();
+        const menu = await getMenuData();
+        setMenuTabs(menu);
+        setMenuItems(menu);
     } catch {
         document.querySelector('body').innerHTML = `
         <h1>Ooops! We're having trouble loading the menu</h1>
-        `;
+        `
     }
 }
 
+// Create loader
 function createLoader() {
     const loader = document.querySelector('aside');
     setTimeout(() => {
@@ -34,43 +50,108 @@ function createLoader() {
     }, 2000);
 }
 
-function createCategories(menu) {
-    const appetizers = menu.filter(item => item.category === 'Appetizers');
-    const dishes = menu.filter(item => item.category === 'Dishes');
-    const curry = menu.filter(item => item.category === 'Curry');
-    const breakfast = menu.filter(item => item.category === 'Breakfast');
-    const desserts = menu.filter(item => item.category === 'Desserts');
-    const drinks = menu.filter(item => item.category === 'Drinks');
-    return [appetizers, dishes, curry, breakfast, desserts, drinks];
+// Category names
+function getCategoryNames(menu) {
+    const categories = menu.map(item => {
+        const { category } = item;
+        return category;
+    });
+    const categoryNames = [...new Set(categories)];
+    const categoriesSorted = categoryNames.sort();
+    
+    return categoriesSorted;
 }
 
-function createArticles() {
-    const labels = ['Appetizers', 'Dishes', 'Curry', 'Breakfast', 'Desserts', 'Drinks'];
-    const subLabels = ['Main dishes served with Pita bread', 'All day, Saturdays only'];
-    const articles = document.querySelectorAll('article');
-    const subArticles = [articles[1], articles[3]];
-    articles.forEach((article, i) => {
-        const h2 = document.createElement('h2');
-        const ul = document.createElement('ul');
-        h2.innerText = labels[i];
-        article.appendChild(h2);
-        article.appendChild(ul);
-    });
-    subArticles.forEach((article, i) => {
-        const h2 = article.querySelector('h2');
-        const h3 = document.createElement('h3');
-        h3.innerText = subLabels[i];
-        h2.insertAdjacentElement('afterend', h3);
+// Category objects
+function getCategoryObjects(menu) {
+    const categoryNames = getCategoryNames(menu);
+    const categories = menu.map(items => {
+        const {
+            name,
+            description,
+            price,
+            category,
+            image
+        } = items;
+        return {
+            name,
+            description,
+            price,
+            category,
+            image
+        };
+    })
+    const categoryObjects = []
+    categoryNames.forEach((category, i) => {
+        category = categories.filter(item =>
+            item.category === categoryNames[i]
+        );
+        categoryObjects.push(category);
+    })
+    return categoryObjects;
+}
+
+// Navigation tabs
+function setMenuTabs(menu) {
+    const categories = getCategoryNames(menu);
+    const nav = document.querySelector('nav');
+    const ul = document.createElement('ul');
+    nav.appendChild(ul);
+    categories.forEach(category => {
+        const lowercaseCategory = category.toLowerCase();
+        const li = document.createElement('li');
+        const anchor = document.createElement('a');
+        li.classList.add(`${lowercaseCategory}`);
+        anchor.setAttribute('href', `#${lowercaseCategory}`);
+        anchor.innerText = category;
+        ul.appendChild(li);
+        li.appendChild(anchor);
     })
 }
 
-function createMenu(data) {
-    createArticles();
-    const categories = createCategories(data);
+// Section articles
+function setMenuSections(menu) {
+    const categories = getCategoryNames(menu);
+    const section = document.querySelector('section');
+    categories.forEach(category => {
+        const lowercaseCategory = category.toLowerCase();
+        const article = document.createElement('article');
+        const h2 = document.createElement('h2');
+        const ul = document.createElement('ul');
+        article.setAttribute('id', `${lowercaseCategory}`);
+        h2.innerText = category;
+        section.appendChild(article);
+        article.appendChild(h2);
+        article.appendChild(ul);
+    })
+    const dishes = document.querySelector('#dishes h2');
+    const breakfast = document.querySelector('#breakfast h2');
+    const headings = [dishes, breakfast];
+    const subHeadings = [
+        'Main dishes served with Pita bread',
+        'All day, Saturdays only'
+    ];
+    headings.forEach((heading, i) => {
+        const h3 = document.createElement('h3');
+        h3.innerText = subHeadings[i];
+        heading.insertAdjacentElement('afterend', h3);
+    })
+}
+
+// Menu items
+function setMenuItems(menu) {
+    setMenuSections(menu);
+    const categories = getCategoryObjects(menu);
     const ul = document.querySelectorAll('article ul');
     categories.map((items, i) => {
         ul[i].innerHTML += items.map(item => {
-            const { category, name, description, price, image } = item;
+            const {
+                category,
+                name,
+                description,
+                price,
+                image
+            } = item;
             return `
             <li onclick="createModal('${category}', '${name}', '${description}', '${price}', '${image}')">
                 <div class="item-image">
@@ -87,6 +168,7 @@ function createMenu(data) {
     })
 }
 
+// Create modal
 function createModal(category, name, description, price, image) {
     const body = document.querySelector('body');
     const dialog = document.querySelector('dialog');
@@ -97,7 +179,11 @@ function createModal(category, name, description, price, image) {
     <div class="dialog-scrim"></div>
     <div class="dialog-container">
         <div class="dialog-header" style="background-image: url('${image}')">
-            <button type="button" aria-label="Close menu item" onclick="closeModal()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16" height="16" fill="#292a2d"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg></button>
+            <button type="button" aria-label="Close menu item" onclick="closeModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16" height="16" fill="#292a2d">
+                    <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                </svg>
+            </button>
         </div>
         <div class="dialog-body">
             <h5>${category}</h5>
@@ -109,6 +195,7 @@ function createModal(category, name, description, price, image) {
     `
 }
 
+// Close modal
 function closeModal() {
     const body = document.querySelector('body');
     const dialog = document.querySelector('dialog');
@@ -118,6 +205,7 @@ function closeModal() {
     dialog.innerHTML = '';
 }
 
+// Tab click
 function onTabClick() {
     const tabs = document.querySelectorAll('nav ul li');
     tabs.forEach((tab, i) => {
@@ -128,13 +216,14 @@ function onTabClick() {
     })
 }
 
+// Active tab on page scroll
 function onPageScroll() {
     const articles = document.querySelectorAll('article');
     const tabs = document.querySelectorAll('nav ul li');
     let current = '';
     articles.forEach(article => {
         const articleTop = article.offsetTop;
-        if (window.pageYOffset >= articleTop - 50) {
+        if (window.pageYOffset >= articleTop - 150) {
             current = article.getAttribute('id');
         }
     })

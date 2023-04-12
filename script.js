@@ -24,7 +24,6 @@ async function getData() {
             image
         }
     })
-    console.log(menu)
     return menu
 }
 

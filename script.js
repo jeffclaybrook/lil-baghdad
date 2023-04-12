@@ -215,7 +215,7 @@ function onPageScroll() {
     let current = '';
     articles.forEach(article => {
         const articleTop = article.offsetTop;
-        if (window.pageYOffset >= articleTop - 60) {
+        if (window.pageYOffset >= articleTop - 50) {
             current = article.getAttribute('id')
         }
     })

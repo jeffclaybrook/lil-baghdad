@@ -1,4 +1,3 @@
-// Fetch data
 async function getMenuData() {
     const client = contentful.createClient({
         space: 'rmkbw43wse32',
@@ -7,7 +6,7 @@ async function getMenuData() {
     const res = await client.getEntries({
         content_type: 'lilBaghdad'
     })
-    const data = await res.items;
+    const data = await res.items
     const menu = data.map(item => {
         const {
             name,
@@ -15,25 +14,24 @@ async function getMenuData() {
             price,
             category
         } = item.fields;
-        const image = item.fields.image.fields.file.url;
+        const image = item.fields.image.fields.file.url
         return {
             name,
             description,
             price,
             category,
             image
-        };
-    });
-    return menu;
+        }
+    })
+    return menu
 }
 
-// Initialize app
 async function initApp() {
-    createLoader();
+    createLoader()
     try {
-        const menu = await getMenuData();
-        setMenuTabs(menu);
-        setMenuItems(menu);
+        const menu = await getMenuData()
+        setMenuTabs(menu)
+        setMenuItems(menu)
     } catch {
         document.querySelector('body').innerHTML = `
         <h1>Ooops! We're having trouble loading the menu</h1>
@@ -41,30 +39,26 @@ async function initApp() {
     }
 }
 
-// Create loader
 function createLoader() {
-    const loader = document.querySelector('aside');
+    const loader = document.querySelector('aside')
     setTimeout(() => {
-        loader.classList.remove('visible');
-        loader.innerHTML = '';
-    }, 2000);
+        loader.classList.remove('visible')
+        loader.innerHTML = ''
+    }, 2000)
 }
 
-// Category names
 function getCategoryNames(menu) {
     const categories = menu.map(item => {
-        const { category } = item;
-        return category;
+        const { category } = item
+        return category
     });
-    const categoryNames = [...new Set(categories)];
-    const categoriesSorted = categoryNames.sort();
-    
-    return categoriesSorted;
+    const categoryNames = [...new Set(categories)]
+    const categoriesSorted = categoryNames.sort()
+    return categoriesSorted
 }
 
-// Category objects
 function getCategoryObjects(menu) {
-    const categoryNames = getCategoryNames(menu);
+    const categoryNames = getCategoryNames(menu)
     const categories = menu.map(items => {
         const {
             name,
@@ -72,77 +66,74 @@ function getCategoryObjects(menu) {
             price,
             category,
             image
-        } = items;
+        } = items
         return {
             name,
             description,
             price,
             category,
             image
-        };
+        }
     })
     const categoryObjects = []
     categoryNames.forEach((category, i) => {
         category = categories.filter(item =>
             item.category === categoryNames[i]
         );
-        categoryObjects.push(category);
+        categoryObjects.push(category)
     })
-    return categoryObjects;
+    return categoryObjects
 }
 
-// Navigation tabs
 function setMenuTabs(menu) {
-    const categories = getCategoryNames(menu);
-    const nav = document.querySelector('nav');
-    const ul = document.createElement('ul');
-    nav.appendChild(ul);
+    const categories = getCategoryNames(menu)
+    const nav = document.querySelector('nav')
+    const ul = document.createElement('ul')
+    nav.appendChild(ul)
     categories.forEach(category => {
-        const lowercaseCategory = category.toLowerCase();
-        const li = document.createElement('li');
-        const anchor = document.createElement('a');
-        li.classList.add(`${lowercaseCategory}`);
-        anchor.setAttribute('href', `#${lowercaseCategory}`);
-        anchor.innerText = category;
-        ul.appendChild(li);
-        li.appendChild(anchor);
+        const lowercaseCategory = category.toLowerCase()
+        const li = document.createElement('li')
+        const anchor = document.createElement('a')
+        li.classList.add(`${lowercaseCategory}`)
+        anchor.setAttribute('href', `#${lowercaseCategory}`)
+        anchor.innerText = category
+        ul.appendChild(li)
+        li.appendChild(anchor)
     })
 }
 
-// Section articles
 function setMenuSections(menu) {
-    const categories = getCategoryNames(menu);
-    const section = document.querySelector('section');
+    const categories = getCategoryNames(menu)
+    const section = document.querySelector('section')
     categories.forEach(category => {
-        const lowercaseCategory = category.toLowerCase();
-        const article = document.createElement('article');
-        const h2 = document.createElement('h2');
-        const ul = document.createElement('ul');
-        article.setAttribute('id', `${lowercaseCategory}`);
-        h2.innerText = category;
-        section.appendChild(article);
-        article.appendChild(h2);
-        article.appendChild(ul);
+        const lowercaseCategory = category.toLowerCase()
+        const article = document.createElement('article')
+        const h2 = document.createElement('h2')
+        const ul = document.createElement('ul')
+        article.setAttribute('id', `${lowercaseCategory}`)
+        h2.innerText = category
+        section.appendChild(article)
+        article.appendChild(h2)
+        article.appendChild(ul)
     })
-    const dishes = document.querySelector('#dishes h2');
-    const breakfast = document.querySelector('#breakfast h2');
-    const headings = [dishes, breakfast];
+    const dishes = document.querySelector('#dishes h2')
+    const breakfast = document.querySelector('#breakfast h2')
+    const headings = [dishes, breakfast]
     const subHeadings = [
         'Main dishes served with Pita bread',
         'All day, Saturdays only'
-    ];
+    ]
     headings.forEach((heading, i) => {
-        const h3 = document.createElement('h3');
-        h3.innerText = subHeadings[i];
-        heading.insertAdjacentElement('afterend', h3);
+        const h3 = document.createElement('h3')
+        h3.innerText = subHeadings[i]
+        heading.insertAdjacentElement('afterend', h3)
     })
 }
 
-// Menu items
 function setMenuItems(menu) {
-    setMenuSections(menu);
-    const categories = getCategoryObjects(menu);
-    const ul = document.querySelectorAll('article ul');
+    setMenuSections(menu)
+    const categories = getCategoryObjects(menu)
+    const ul = document.querySelectorAll('article ul')
     categories.map((items, i) => {
         ul[i].innerHTML += items.map(item => {
             const {
@@ -151,7 +142,7 @@ function setMenuItems(menu) {
                 description,
                 price,
                 image
-            } = item;
+            } = item
             return `
             <li onclick="createModal('${category}', '${name}', '${description}', '${price}', '${image}')">
                 <div class="item-image">
@@ -164,17 +155,16 @@ function setMenuItems(menu) {
                 </div>
             </li>
             `
-        }).join('');
+        }).join('')
     })
 }
 
-// Create modal
 function createModal(category, name, description, price, image) {
-    const body = document.querySelector('body');
-    const dialog = document.querySelector('dialog');
-    body.style.overflow = 'hidden';
-    dialog.classList.add('expanded');
-    dialog.setAttribute('aria-hidden', 'false');
+    const body = document.querySelector('body')
+    const dialog = document.querySelector('dialog')
+    body.style.overflow = 'hidden'
+    dialog.classList.add('expanded')
+    dialog.setAttribute('aria-hidden', 'false')
     dialog.innerHTML += `
     <div class="dialog-scrim"></div>
     <div class="dialog-container">
@@ -195,46 +185,43 @@ function createModal(category, name, description, price, image) {
     `
 }
 
-// Close modal
 function closeModal() {
-    const body = document.querySelector('body');
-    const dialog = document.querySelector('dialog');
-    body.style.overflow = 'auto';
-    dialog.classList.remove('expanded');
-    dialog.setAttribute('aria-hidden', 'true');
-    dialog.innerHTML = '';
+    const body = document.querySelector('body')
+    const dialog = document.querySelector('dialog')
+    body.style.overflow = 'auto'
+    dialog.classList.remove('expanded')
+    dialog.setAttribute('aria-hidden', 'true')
+    dialog.innerHTML = ''
 }
 
-// Tab click
 function onTabClick() {
-    const tabs = document.querySelectorAll('nav ul li');
+    const tabs = document.querySelectorAll('nav ul li')
     tabs.forEach((tab, i) => {
         tab.addEventListener('click', () => {
-            tabs.forEach(tab => tab.classList.remove('active'));
-            tabs[i].classList.add('active');
+            tabs.forEach(tab => tab.classList.remove('active'))
+            tabs[i].classList.add('active')
         })
     })
 }
 
-// Active tab on page scroll
 function onPageScroll() {
-    const articles = document.querySelectorAll('article');
-    const tabs = document.querySelectorAll('nav ul li');
-    let current = '';
+    const articles = document.querySelectorAll('article')
+    const tabs = document.querySelectorAll('nav ul li')
+    let current = ''
     articles.forEach(article => {
         const articleTop = article.offsetTop;
         if (window.pageYOffset >= articleTop - 60) {
-            current = article.getAttribute('id');
+            current = article.getAttribute('id')
         }
     })
     tabs.forEach(tab => {
-        tab.classList.remove('active');
+        tab.classList.remove('active')
         if (tab.classList.contains(current)) {
-            tab.classList.add('active');
+            tab.classList.add('active')
         }
     })
 }
 
-window.addEventListener('scroll', onPageScroll);
+window.addEventListener('scroll', onPageScroll)
 
 initApp()

@@ -148,10 +148,11 @@ function setCategoryItems(menu) {
                 image
             } = item;
             const priceFormatted = price.toFixed(2);
+            const imageFormatted = `https:${image}`;
             return `
-            <li onclick="createModal('${name}', '${category}', '${description}', '${priceFormatted}', '${image}')">
+            <li onclick="createModal('${name}', '${category}', '${description}', '${priceFormatted}', '${imageFormatted}')">
                 <div class="item-image">
-                    <img src="${image}" alt="${name}" style="aspect-ratio: 16 / 10" loading="lazy">
+                    <img src="${imageFormatted}" alt="${name}" style="aspect-ratio: 16 / 10" loading="lazy">
                 </div>
                 <div class="item-details">
                     <h3>${name}</h3>
@@ -164,7 +165,7 @@ function setCategoryItems(menu) {
     })
 }
 
-function createModal(name, category, description, priceFormatted, image) {
+function createModal(name, category, description, priceFormatted, imageFormatted) {
     const body = document.querySelector('body');
     const dialog = document.querySelector('dialog');
     body.style.overflow = 'hidden';
@@ -173,7 +174,7 @@ function createModal(name, category, description, priceFormatted, image) {
     dialog.innerHTML += `
     <div class="dialog-scrim"></div>
     <div class="dialog-container">
-        <div class="dialog-header" style="background-image: url('${image}')">
+        <div class="dialog-header" style="background-image: url('${imageFormatted}')">
             <button type="button" aria-label="Close menu item" onclick="closeModal()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16" height="16" fill="#292a2d">
                     <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>

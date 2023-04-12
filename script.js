@@ -24,6 +24,7 @@ async function getData() {
             image
         }
     })
+    console.log(menu)
     return menu
 }
 
@@ -123,9 +124,9 @@ function setCategorySections(menu) {
         document.querySelector('#breakfast h2')
     ];
     const subHeadings = [
-        'Main dishes served with pita bread',
-        'Curry dishes served with side of Basmati rice',
-        'All day, Saturdays only'
+        'Served with side of pita bread',
+        'Served with side of Basmati rice',
+        'Served all day, Saturdays only'
     ];
     headings.forEach((heading, i) => {
         const h3 = document.createElement('h3');

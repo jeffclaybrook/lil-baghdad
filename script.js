@@ -48,7 +48,7 @@ function getPageLoader() {
     }, 2000)
 }
 
-function getCategoryNames(menu) {
+/* function getCategoryNames(menu) {
     const categories = menu.map(item => {
         const { category } = item;
         return category
@@ -56,10 +56,15 @@ function getCategoryNames(menu) {
     const categoryNames = [...new Set(categories)];
     const categoriesSorted = categoryNames.reverse();
     return categoriesSorted;
+} */
+
+function getCategoryNamesNew(menu) {
+    const categories = ['Appetizers', 'Dishes', 'Curry', 'Breakfast', 'Desserts', 'Drinks'];
+    return categories;
 }
 
 function getCategoryData(menu) {
-    const categoryNames = getCategoryNames(menu);
+    const categoryNames = getCategoryNamesNew(menu);
     const categories = menu.map(items => {
         const {
             name,
@@ -87,7 +92,7 @@ function getCategoryData(menu) {
 }
 
 function setCategoryTabs(menu) {
-    const categoryNames = getCategoryNames(menu);
+    const categoryNames = getCategoryNamesNew(menu);
     const nav = document.querySelector('nav');
     const ul = document.createElement('ul');
     nav.appendChild(ul);
@@ -104,7 +109,7 @@ function setCategoryTabs(menu) {
 }
 
 function setCategorySections(menu) {
-    const categoryNames = getCategoryNames(menu);
+    const categoryNames = getCategoryNamesNew(menu);
     const section = document.querySelector('section');
     categoryNames.forEach(category => {
         const lowercaseCategory = category.toLowerCase();

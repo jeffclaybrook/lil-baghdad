@@ -33,6 +33,7 @@ async function initApp() {
         const menu = await getData();
         setCategoryTabs(menu);
         setCategoryItems(menu);
+        setDisabledItems();
     } catch {
         document.querySelector('body').innerHTML = `
         <h1>Ooops! We're having trouble loading the menu</h1>
@@ -47,16 +48,6 @@ function getPageLoader() {
         loader.innerHTML = '';
     }, 2000)
 }
-
-/* function getCategoryNames(menu) {
-    const categories = menu.map(item => {
-        const { category } = item;
-        return category
-    })
-    const categoryNames = [...new Set(categories)];
-    const categoriesSorted = categoryNames.reverse();
-    return categoriesSorted;
-} */
 
 function getCategoryNamesNew(menu) {
     const categories = ['Appetizers', 'Dishes', 'Curry', 'Breakfast', 'Desserts', 'Drinks'];
@@ -168,6 +159,20 @@ function setCategoryItems(menu) {
             `
         }).join('')
     })
+}
+
+function setDisabledItems() {
+    const breakfastItems = document.querySelectorAll('#breakfast li');
+    const date = new Date();
+    if (date.getDay() != 6) {
+        breakfastItems.forEach(item => {
+            item.classList.add('disabled')
+        })
+    } else if (date.getDay() == 6) {
+        breakfastItems.forEach(item => {
+            item.classList.remove('disabled')
+        })
+    }
 }
 
 function createModal(name, category, description, priceFormatted, imageFormatted) {

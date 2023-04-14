@@ -322,10 +322,10 @@ article ul li.disabled {
 
 article ul li.disabled .item-image::before {
     content: 'Breakfast available on Saturdays only';
-    font-size: 1.5rem;
+    font-size: 1.325rem;
     letter-spacing: .02em;
     font-family: 'Figtree', sans-serif;
-    padding: 0 6rem;
+    padding: 0 3rem;
     line-height: 1.4;
     text-align: center;
     background: rgba(0,0,0,0.65);
@@ -548,6 +548,11 @@ dialog .dialog-container .dialog-body p {
 
     article ul li .item-details p {
         font-size: .975rem;
+    }
+
+    article ul li.disabled .item-image::before {
+        padding: 0 5rem;
+        font-size: 1.5rem;
     }
 
     dialog .dialog-container .dialog-body {

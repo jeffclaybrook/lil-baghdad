@@ -49,13 +49,20 @@ function getPageLoader() {
     }, 2000)
 }
 
-function getCategoryNamesNew(menu) {
-    const categories = ['Appetizers', 'Dishes', 'Curry', 'Breakfast', 'Desserts', 'Drinks'];
+function getCategoryNames(menu) {
+    const categories = [
+        'Appetizers',
+        'Dishes',
+        'Curry',
+        'Breakfast',
+        'Desserts',
+        'Drinks'
+    ];
     return categories;
 }
 
 function getCategoryData(menu) {
-    const categoryNames = getCategoryNamesNew(menu);
+    const categoryNames = getCategoryNames(menu);
     const categories = menu.map(items => {
         const {
             name,
@@ -71,28 +78,28 @@ function getCategoryData(menu) {
             price,
             image
         }
-    })
-    const categoryData = [];
+    });
+    const data = [];
     categoryNames.forEach((category, i) => {
         category = categories.filter(item =>
             item.category === categoryNames[i]
-        )
-        categoryData.push(category);
+        );
+        data.push(category);
     })
-    return categoryData;
+    return data;
 }
 
 function setCategoryTabs(menu) {
-    const categoryNames = getCategoryNamesNew(menu);
+    const categories = getCategoryNames(menu);
     const nav = document.querySelector('nav');
     const ul = document.createElement('ul');
     nav.appendChild(ul);
-    categoryNames.forEach(category => {
-        const lowercaseCategory = category.toLowerCase();
+    categories.forEach(category => {
+        const categoryFormatted = category.toLowerCase();
         const li = document.createElement('li');
         const anchor = document.createElement('a');
-        li.classList.add(`${lowercaseCategory}`);
-        anchor.setAttribute('href', `#${lowercaseCategory}`);
+        li.classList.add(`${categoryFormatted}`);
+        anchor.setAttribute('href', `#${categoryFormatted}`);
         anchor.innerText = category;
         ul.appendChild(li);
         li.appendChild(anchor);
@@ -100,14 +107,14 @@ function setCategoryTabs(menu) {
 }
 
 function setCategorySections(menu) {
-    const categoryNames = getCategoryNamesNew(menu);
+    const categories = getCategoryNames(menu);
     const section = document.querySelector('section');
-    categoryNames.forEach(category => {
-        const lowercaseCategory = category.toLowerCase();
+    categories.forEach(category => {
+        const categoryFormatted = category.toLowerCase();
         const article = document.createElement('article');
         const h2 = document.createElement('h2');
         const ul = document.createElement('ul');
-        article.setAttribute('id', `${lowercaseCategory}`);
+        article.setAttribute('id', `${categoryFormatted}`);
         h2.innerText = category;
         section.appendChild(article);
         article.appendChild(h2);
@@ -132,9 +139,9 @@ function setCategorySections(menu) {
 
 function setCategoryItems(menu) {
     setCategorySections(menu);
-    const categoryData = getCategoryData(menu);
+    const data = getCategoryData(menu);
     const ul = document.querySelectorAll('article ul');
-    categoryData.map((items, i) => {
+    data.map((items, i) => {
         ul[i].innerHTML += items.map(item => {
             const {
                 name,
@@ -157,7 +164,7 @@ function setCategoryItems(menu) {
                 </div>
             </li>
             `
-        }).join('')
+        }).join('');
     })
 }
 

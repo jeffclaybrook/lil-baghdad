@@ -97,13 +97,6 @@ figcaption {
   font-variant: small-caps;
 }
 
-header h5 {
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  margin-block-end: 1rem;
-}
-
 header .flex {
   display: flex;
   align-items: center;
@@ -129,6 +122,7 @@ header a svg {
 }
 
 header > svg {
+  margin-block-end: .25rem;
   opacity: 0.6;
 }
 
@@ -224,6 +218,10 @@ article h2 {
   padding-block-start: 0.75rem;
 }
 
+article:first-of-type h2 {
+  padding-block-start: 1.25rem;
+}
+
 article > h3 {
   font-size: 0.925rem;
   font-weight: 400;
@@ -292,7 +290,7 @@ article ul li .item-details {
 }
 
 article ul li .item-details h3 {
-  font-size: 1.1275rem;
+  font-size: 1.0875rem;
   font-weight: 450;
   letter-spacing: 0.02em;
   margin-block-end: 0.25rem;
@@ -306,6 +304,7 @@ article ul li .item-details h3 {
 }
 
 article ul li .item-details h4 {
+  font-size: .925rem;
   font-weight: 500;
   letter-spacing: 0.03em;
 }

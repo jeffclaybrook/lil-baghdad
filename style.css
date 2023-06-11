@@ -77,6 +77,7 @@ header {
   position: relative;
   block-size: 100vh;
   padding-block-end: 4em;
+  padding-inline: .75em;
 }
 
 header::before {
@@ -143,14 +144,14 @@ header a svg {
   block-size: 1em;
 }
 
-header > svg {
-  margin-block-end: .25em;
-  opacity: 0.6;
-}
-
 header a:last-of-type svg {
   block-size: 1.5em;
   fill: var(--theme-100);
+}
+
+header > svg {
+  margin-block-end: .25em;
+  opacity: 0.6;
 }
 
 header p {
@@ -184,7 +185,7 @@ nav ul {
   inline-size: 100%;
   margin-inline-start: auto;
   margin-inline-end: auto;
-  padding: 0 0.75em;
+  padding-inline: .75em;
 }
 
 nav ul li {
@@ -234,7 +235,7 @@ article {
   max-inline-size: 850px;
   inline-size: 100%;
   position: relative;
-  padding: 0 0.75em;
+  padding-inline: 0.75em;
   margin: 0 auto 1.5em;
 }
 
@@ -360,10 +361,11 @@ article ul li.disabled .item-image::before {
   font-size: 1.325em;
   letter-spacing: 0.02em;
   font-family: "Figtree", sans-serif;
-  padding: 0 3em;
+  padding-inline: 2em;
   line-height: 1.4;
   text-align: center;
   background: rgba(0, 0, 0, 0.65);
+  border-radius: inherit;
 }
 
 article ul li.disabled .item-details {
@@ -426,7 +428,7 @@ dialog {
   left: 0;
   inset-block-start: 0px;
   inset-inline-start: 0px;
-  padding: 0 0.25em;
+  padding-inline: 0.25em;
   box-sizing: border-box;
   block-size: 100%;
   max-block-size: none;
@@ -586,7 +588,7 @@ dialog .dialog-content .dialog-body p {
   }
 
   article ul li.disabled .item-image::before {
-    padding: 0 5em;
+    padding-inline: 4em;
     font-size: 1.5em;
   }
 

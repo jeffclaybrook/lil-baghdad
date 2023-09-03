@@ -104,9 +104,8 @@ header figure img {
 }
 
 figcaption {
-  font-size: 1.375em;
+  font-size: 1.375rem;
   font-weight: 300;
-  letter-spacing: 0.02em;
   font-variant: small-caps;
   color: var(--theme-300);
 }
@@ -206,9 +205,8 @@ nav ul li a {
   position: relative;
   color: var(--text-100);
   font-family: "Figtree", sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
   padding: 0.875rem 0.25em;
   border-radius: 0.25em 0.25em 0 0;
 }
@@ -247,9 +245,8 @@ article {
 }
 
 article h2 {
-  font-size: 1.375em;
+  font-size: 1.375rem;
   font-weight: 450;
-  letter-spacing: 0.03em;
   padding-block-start: 0.75em;
 }
 
@@ -258,9 +255,8 @@ article:first-of-type h2 {
 }
 
 article > h3 {
-  font-size: 0.925em;
+  font-size: 0.925rem;
   font-weight: 400;
-  letter-spacing: 0.03em;
   color: var(--text-200);
   padding-block-start: 0.25em;
 }
@@ -336,9 +332,8 @@ article ul li .item-details {
 }
 
 article ul li .item-details h3 {
-  font-size: 1.0875em;
+  font-size: 1.0875rem;
   font-weight: 450;
-  letter-spacing: 0.02em;
   line-height: 1.4;
   margin-block-end: 0.125em;
   display: -webkit-box;
@@ -351,15 +346,13 @@ article ul li .item-details h3 {
 }
 
 article ul li .item-details h4 {
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.03em;
 }
 
 article ul li .item-details p {
-  font-size: 0.925em;
+  font-size: 0.925rem;
   color: var(--text-200);
-  letter-spacing: 0.015em;
   line-height: 1.5;
   margin-block-end: 0.5em;
   display: -webkit-box;
@@ -377,8 +370,7 @@ article ul li.disabled {
 
 article ul li.disabled .item-image::before {
   content: "Breakfast available on Saturdays only";
-  font-size: 1.325em;
-  letter-spacing: 0.02em;
+  font-size: 1.325rem;
   font-family: "Figtree", sans-serif;
   padding-inline: 2em;
   line-height: 1.4;
@@ -419,11 +411,10 @@ footer > a:last-of-type {
 
 footer > a:last-of-type span {
   color: var(--text-200);
-  font-size: 1em;
+  font-size: 1rem;
   line-height: 1.5;
   font-family: "Figtree", system-ui, sans-serif;
   font-weight: 500;
-  letter-spacing: 0.02em;
 }
 
 footer > a:last-of-type:hover span {
@@ -459,7 +450,7 @@ footer ul li a:hover {
 }
 
 footer p {
-  font-size: 0.825em;
+  font-size: 0.825rem;
   font-weight: 400;
   color: var(--text-200);
   text-align: center;
@@ -577,34 +568,31 @@ dialog .dialog-content .dialog-body {
 }
 
 dialog .dialog-content .dialog-body h3 {
-  font-size: 1.25em;
+  font-size: 1.25rem;
   font-weight: 550;
   color: var(--text-100);
-  letter-spacing: 0.015em;
   margin-block-end: 0.5em;
 }
 
 dialog .dialog-content .dialog-body h4 {
-  font-size: 1.1875em;
+  font-size: 1.1875rem;
   font-weight: 600;
   color: var(--text-100);
 }
 
 dialog .dialog-content .dialog-body h5 {
-  font-size: 0.875em;
+  font-size: 0.875rem;
   font-weight: 450;
   color: var(--theme-100);
   opacity: 0.9;
-  letter-spacing: 0.06em;
   text-transform: uppercase;
   padding-block-start: 0.25em;
   margin-block-end: 0.325em;
 }
 
 dialog .dialog-content .dialog-body p {
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 400;
-  letter-spacing: 0.02em;
   color: var(--text-200);
   line-height: 1.5;
   margin-block-end: 0.5rem;
@@ -616,19 +604,19 @@ dialog .dialog-content .dialog-body p {
   }
 
   article ul li .item-details h3 {
-    font-size: 1.1875em;
+    font-size: 1.1875rem;
   }
 
   article ul li .item-details h4 {
-    font-size: 1em;
+    font-size: 1rem;
   }
   article ul li .item-details p {
-    font-size: 0.975em;
+    font-size: 0.975rem;
   }
 
   article ul li.disabled .item-image::before {
     padding-inline: 4em;
-    font-size: 1.5em;
+    font-size: 1.5rem;
   }
 
   dialog .dialog-content .dialog-body {

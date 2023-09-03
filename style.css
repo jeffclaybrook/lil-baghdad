@@ -334,7 +334,6 @@ article ul li .item-details {
 article ul li .item-details h3 {
   font-size: 1.0875rem;
   font-weight: 450;
-  line-height: 1.4;
   margin-block-end: 0.125em;
   display: -webkit-box;
   text-overflow: ellipsis;
@@ -353,7 +352,6 @@ article ul li .item-details h4 {
 article ul li .item-details p {
   font-size: 0.925rem;
   color: var(--text-200);
-  line-height: 1.5;
   margin-block-end: 0.5em;
   display: -webkit-box;
   text-overflow: ellipsis;

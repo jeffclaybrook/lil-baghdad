@@ -179,7 +179,7 @@ async function getData() {
  const client = contentful.createClient({
   space: 'rmkbw43wse32',
   environment: 'master',
-  accessToken: 'I7gy_bj60ci-4CQl5OEK4ZBOSndhJBnks9vpHL-wg-Y'
+  accessToken: 'owzGp4Ml23vZhWPOdgPCkuVNLhvgb-YJPNTAKmR2P34'
  })
  const res = await client.getEntries({
   content_type: 'lilBaghdad'

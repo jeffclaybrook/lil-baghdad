@@ -446,7 +446,6 @@ footer p {
 dialog {
   position: fixed;
   inset: 0;
-  padding-inline: 0.75em;
   box-sizing: border-box;
   block-size: 100%;
   max-block-size: none;
@@ -480,7 +479,7 @@ dialog.expanded {
 
 dialog .dialog-scrim {
   position: fixed;
-  inset: 0px;
+  inset: 0;
   overflow-y: scroll;
   overscroll-behavior: contain;
   block-size: 100%;

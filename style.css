@@ -503,7 +503,6 @@ dialog .dialog-content {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  max-block-size: 95%;
   max-inline-size: 550px;
   inline-size: 100%;
   border-radius: 0.75em;
@@ -604,6 +603,10 @@ dialog .dialog-content .dialog-body p {
   article ul li.disabled .item-image::before {
     padding-inline: 4em;
     font-size: 1.5rem;
+  }
+
+  dialog .dialog-content {
+    max-block-size: 95%;
   }
 
   dialog .dialog-content .dialog-body {

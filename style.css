@@ -581,7 +581,7 @@ dialog .dialog-content .dialog-body p {
   font-size: 1.125rem;
   font-weight: 400;
   color: var(--text-200);
-  line-height: 1.5;
+  line-height: 1.4;
   margin-block-end: 0.5rem;
 }
 
@@ -608,6 +608,10 @@ dialog .dialog-content .dialog-body p {
 
   dialog .dialog-content .dialog-body {
     padding: 1.25em;
+  }
+
+  dialog .dialog-content .dialog-body p {
+    line-height: 1.5;
   }
 }
 

@@ -47,7 +47,7 @@ function getCategories() {
   'Appetizers',
   'Dishes',
   'Curry',
-  'Breakfast',
+  //'Breakfast',
   'Desserts',
   'Drinks'
  ]
@@ -81,12 +81,12 @@ function createSections() {
  const subHeadings = [
   'Served with side of pita bread',
   'Served with a side of basmati rice',
-  'Served all day, Saturdays only'
+  // 'Served all day, Saturdays only'
  ]
  const headings = [
   document.querySelector('#dishes h2'),
   document.querySelector('#curry h2'),
-  document.querySelector('#breakfast h2')
+  // document.querySelector('#breakfast h2')
  ]
  headings.forEach((heading, i) => {
   const h3 = document.createElement('h3')
@@ -121,10 +121,10 @@ function createMenu(data) {
    `
   }).join('')
  })
- setDisabledItems()
+ // setDisabledItems()
 }
 
-function setDisabledItems() {
+/* function setDisabledItems() {
  const items = document.querySelectorAll('#breakfast li')
  const date = new Date()
  if (date.getDay() != 6) {
@@ -136,7 +136,7 @@ function setDisabledItems() {
    item.classList.remove('disabled')
   })
  }
-}
+} */
 
 function createDialog(name, category, description, priceAlt, imageAlt) {
  const body = document.querySelector('body')

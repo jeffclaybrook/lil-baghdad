@@ -1,7 +1,6 @@
 import Card from "@/components/card"
 import Header from "@/components/header"
 import Section from "@/components/section"
-import Separator from "@/components/separator"
 import { items, Item } from "@/lib/data"
 
 function groupItemsByCategory(items: Item[]) {
@@ -31,7 +30,6 @@ export default function Home() {
        id={item.id}
       />
      ))}
-     <Separator />
     </Section>
    ))}
   </>

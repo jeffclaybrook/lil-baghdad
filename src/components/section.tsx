@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react"
 import { motion } from "framer-motion"
+import Separator from "./separator"
 
 type SectionProps = {
  title: string
@@ -33,6 +34,7 @@ export default function Section({ title, children }: SectionProps) {
   >
    <h2 className="text-3xl mb-4">{title}</h2>
    <div className="grid md:grid-cols-2 gap-4">{children}</div>
+   <Separator />
   </motion.section>
  )
 }

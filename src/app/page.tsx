@@ -1,6 +1,7 @@
 import Card from "@/components/card"
 import Header from "@/components/header"
 import Section from "@/components/section"
+import Separator from "@/components/separator"
 import { items, Item } from "@/lib/data"
 
 function groupItemsByCategory(items: Item[]) {
@@ -19,19 +20,28 @@ export default function Home() {
  return (
   <>
    <Header />
-   {Object.entries(groupedItems).map(([category, items]) => (
-    <Section key={category} title={category}>
-     {items.map((item) => (
-      <Card
-       key={item.id}
-       title={item.title}
-       image={item.image}
-       price={item.price}
-       id={item.id}
-      />
-     ))}
-    </Section>
-   ))}
+   {Object.entries(groupedItems).map(([category, items], i, array) => {
+    const isLast = i === array.length - 1
+
+    return (
+     <div key={category}>
+      <Section title={category}>
+       {items.map((item) => (
+        <Card
+         key={item.id}
+         title={item.title}
+         image={item.image}
+         price={item.price}
+         id={item.id}
+        />
+       ))}
+      </Section>
+      {!isLast && (
+       <Separator />
+      )}
+     </div>
+    )
+   })}
   </>
  )
 }
